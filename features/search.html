@@ -61,7 +61,7 @@ public class MyNewPageSearchResultController : PartialContentController&lt;MyNew
 </code></pre></td></tr></table>
 <p>If no template is specified it will fall back to a generic search template found at ~/Views/SearchPage/GenericSearchResult.cshtml.</p>
 <h3><a name="Using-search-in-production" class="anchor" href="#Using-search-in-production">Using search in production</a></h3>
-<p>You should not be using the local indexing service when hosting in production, especially not in Azure or behind a load balancer. In this situation, all sites should share the same index so avoid drift.</p>
+<p>You should not be using the local indexing service when hosting in production, especially not in Azure or behind a load balancer. In this situation, all sites should share the same index to avoid drift.</p>
 <p>A separate site with only the indexing service should be set up in this situation.</p>
 <p>The configuration transformation is set up to remove the local server when building in Release and inject the path to a remote search server using Octopus substitution syntax. See the <a href="octopus.html">Octopus-section</a> for more information.</p>
 <h3><a name="Removing-Episerver-Search" class="anchor" href="#Removing-Episerver-Search">Removing Episerver Search</a></h3>

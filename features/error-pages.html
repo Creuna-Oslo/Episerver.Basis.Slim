@@ -29,11 +29,19 @@
         <div class="span9" id="main">
           
 <h2><a name="Error-Pages" class="anchor" href="#Error-Pages">Error Pages</a></h2>
-<p>The template contains controllers for 404 and 500-pages.
-These can be used to show custom ontent to the user when encountering a missing page or a server error.</p>
-<p>MvcRoutesInitializer.cs initializes two routes that is routing to the ErrorPagesController.cs.</p>
-<p>They are setting the language for the request so translations will work.</p>
-<p>They are enabled in web.config under system.webServer:</p>
+<p>The template contains handling of 404 and 500 errors.</p>
+<h3><a name="404" class="anchor" href="#404">404</a></h3>
+<p>The 404 page is routed to a controller used to show custom content.</p>
+<p>MvcRoutesInitializer.cs initializes a route that is routing to the ErrorPagesController.cs.</p>
+<p>This controller is setting the language for the request so translations will work. Normal best practices should apply, so limit the external references from the 404-page.
+In case one of the assets are returning 404 we won't end up in a loop as the 404 page is requesting a non-existing resource.</p>
+<h3><a name="500" class="anchor" href="#500">500</a></h3>
+<p>The 500 error is not routed through a controller. A 500 error can occur in multiple ways, and if the error occurs before the pipeline is initialized and we cannot initialize routing correctly (e.g. if there's a syntax error in web.config) we're in limbo.</p>
+<p>The easiest way is therefore to return a static file for 500-errors. It is possible to add the 500 error to the ErrorPages controller if needed, but a reasonable fallback strategy should be developed.
+(If you do develop this, please contribute it back to this template!)</p>
+<h3><a name="Adding-additional-handlers" class="anchor" href="#Adding-additional-handlers">Adding additional handlers</a></h3>
+<p>Add a new route to an action on the ErrorPages controller and a new view under /Views/ErrorPages.</p>
+<p>The redirect is enabled in web.config under system.webServer:</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 <span class="l">2: </span>
 <span class="l">3: </span>
@@ -45,7 +53,7 @@ These can be used to show custom ontent to the user when encountering a missing 
   <span class="k">&lt;</span><span class="i">remove</span> <span class="o">statusCode</span><span class="k">="404"</span> <span class="k">/&gt;</span>
   <span class="k">&lt;</span><span class="i">remove</span> <span class="o">statusCode</span><span class="k">="500"</span> <span class="k">/&gt;</span>
   <span class="k">&lt;</span><span class="i">error</span> <span class="o">statusCode</span><span class="k">="404"</span> <span class="o">path</span><span class="k">="/error/404"</span> <span class="o">responseMode</span><span class="k">="ExecuteURL"</span> <span class="k">/&gt;</span>
-  <span class="k">&lt;</span><span class="i">error</span> <span class="o">statusCode</span><span class="k">="500"</span> <span class="o">path</span><span class="k">="/error/500"</span> <span class="o">responseMode</span><span class="k">="ExecuteURL"</span> <span class="k">/&gt;</span>
+  <span class="k">&lt;</span><span class="i">error</span> <span class="o">statusCode</span><span class="k">="500"</span> <span class="o">path</span><span class="k">="500.html"</span> <span class="o">responseMode</span><span class="k">="File"</span> <span class="k">/&gt;</span>
 <span class="k">&lt;/</span><span class="i">httpErrors</span><span class="k">&gt;</span>
 </code></pre></td></tr></table>
 
