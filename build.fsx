@@ -108,6 +108,8 @@ Target "RenameFiles" (fun _ ->
 
 Target "ReplaceRootNamespace" (fun _ ->
     let files = !! (tempDir + "/**/*")
+                |> Seq.where (fun f -> f.EndsWith(".zip") |> not)
+
     RegexReplaceInFilesWithEncoding defaultRootNamespace tokenNamespace Text.Encoding.UTF8 files
 )
 

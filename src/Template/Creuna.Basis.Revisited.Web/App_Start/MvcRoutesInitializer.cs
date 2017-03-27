@@ -22,12 +22,6 @@ namespace Creuna.Basis.Revisited.Web.App_Start
                 url: "error/404",
                 defaults: new { controller = "ErrorPages", action = "NotFound" }
             );
-
-            routes.MapRoute(
-               name: ApplicationConstants.CustomRoutes.InternalServerError,
-               url: "error/500",
-               defaults: new { controller = "ErrorPages", action = "InternalServerError" }
-           );
         }
 
         public void Uninitialize(InitializationEngine context) {}

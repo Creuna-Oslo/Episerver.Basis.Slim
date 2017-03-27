@@ -28,6 +28,6 @@ To add a new tab, add the tab name to the ApplicationConstants.TabNames-class an
 
 ### Max Content Area items
 
-To limit the number of elements in a content area, add the attribute [MacContentAreaItemCount(Limit = X)] to the property.
+To limit the number of elements in a content area, add the attribute [MaxContentAreaItemCount(Limit = X)] to the property.
 This can be found in the [Your solution name].Web.Business.Validation-namespace.
 

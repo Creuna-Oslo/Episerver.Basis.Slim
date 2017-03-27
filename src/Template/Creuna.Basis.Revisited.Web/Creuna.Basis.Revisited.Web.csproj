@@ -286,6 +286,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="500.html" />
     <Content Include="Global.asax" />
     <Content Include="IndexingService\IndexingService.svc" />
     <Content Include="lang\pagetypes.xml" />
@@ -375,7 +376,6 @@
     <Content Include="Views\FrontPage\Index.cshtml" />
     <Content Include="Views\SearchPage\Index.cshtml" />
     <Content Include="Views\ErrorPages\NotFound.cshtml" />
-    <Content Include="Views\ErrorPages\InternalServerError.cshtml" />
     <Content Include="Creuna.Basis.Revisited.Web.nuspec" />
     <Content Include="Views\SearchPage\GenericSearchResult.cshtml" />
   </ItemGroup>
@@ -394,7 +394,7 @@
     <Compile Include="Business\Validation\MaxContentAreaItemCountAttribute.cs" />
     <Compile Include="Controllers\FrontPageController.cs" />
     <Compile Include="Controllers\LayoutController.cs" />
-    <Compile Include="Controllers\NotFoundController.cs" />
+    <Compile Include="Controllers\ErrorPagesController.cs" />
     <Compile Include="Controllers\SearchPageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

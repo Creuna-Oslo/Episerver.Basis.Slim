@@ -33,7 +33,7 @@ If no template is specified it will fall back to a generic search template found
 
 
 ### Using search in production
-You should not be using the local indexing service when hosting in production, especially not in Azure or behind a load balancer. In this situation, all sites should share the same index so avoid drift.
+You should not be using the local indexing service when hosting in production, especially not in Azure or behind a load balancer. In this situation, all sites should share the same index to avoid drift.
 
 A separate site with only the indexing service should be set up in this situation.
 

@@ -32,6 +32,7 @@ Target "UnzipFiles" (fun _ ->
 
 Target "ReplaceRootNameSpace" (fun _ ->
     let files = !! (solution + "/**/*")
+                |> Seq.where (fun f -> f.EndsWith(".zip") |> not)
    
     RegexReplaceInFilesWithEncoding defaultRootNameSpace solution Text.Encoding.UTF8 files
 )
