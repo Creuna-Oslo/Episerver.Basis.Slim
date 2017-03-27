@@ -25,8 +25,8 @@ let gitOwner = "Arthyon"
 let gitHome = "https://github.com/" + gitOwner
 
 // The name of the project on GitHub
-let gitName = "Creuna.Basis.Revisited"
-let cloneUrl = "https://github.com/fsprojects/Paket.VisualStudio.git"
+let gitName = "Episerver.Basis.Slim"
+let cloneUrl = "https://github.com/Arthyon/Episerver.Basis.Slim.git"
 
 // Read additional information from the release notes document
 Environment.CurrentDirectory <- __SOURCE_DIRECTORY__
@@ -124,6 +124,10 @@ Target "GenerateDocs" (fun _ ->
     GenerateDocumentation false
 )
 
+Target "GenerateDocsRelease" (fun _ ->
+    GenerateDocumentation true    
+) 
+
 // --------------------------------------------------------------------------------------
 // Release Scripts
 
@@ -170,14 +174,13 @@ Target "WriteDocumentation" DoNothing
 
 
 "CleanDocs"
-  ==> "GenerateDocs"
+  ==> "GenerateDocs" 
   ==> "KeepRunning"
   ==> "WriteDocumentation"
-//  ==> "CleanDocs"
-//  ==> "GenerateDocs"
-//  ==> "ReleaseDocs"
-//  ==> "ReleaseToGitHub"
-//  ==> "UploadToGallery"
-//  ==> "Release"
+
+"CleanDocs"
+ ==> "GenerateDocsRelease" 
+ ==> "ReleaseDocs"
+ ==> "Release"
 
 RunTargetOrDefault "Default"

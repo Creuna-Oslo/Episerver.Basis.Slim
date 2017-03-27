@@ -6,7 +6,7 @@
 // Binaries that have XML documentation (in a corresponding generated XML file)
 let referenceBinaries = [ "FSharpVSPowerTools.Core.dll" ]
 // Web site location for the generated documentation
-let website = "."
+let website = "/Episerver.Basis.Slim"
 
 let githubLink = "http://github.com/Arthyon/Episerver.Basis.Slim"
 
@@ -40,11 +40,11 @@ open FSharp.MetadataFormat
 
 // When called from 'build.fsx', use the public project URL as <root>
 // otherwise, use the current 'output' directory.
-// #if RELEASE
-// let root = website
-// #else
+#if RELEASE
+let root = website
+#else
 let root = "file://" + (__SOURCE_DIRECTORY__ @@ "../output")
-// #endif
+#endif
 
 // Paths with template/source/output locations
 let content    = __SOURCE_DIRECTORY__ @@ "../content"
