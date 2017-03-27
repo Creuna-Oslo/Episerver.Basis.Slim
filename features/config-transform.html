@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>config-transform</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A quickstart template for new Episerver projects">
+    <meta name="author" content="Christian Hochlin">
+
+    <script src="https://code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="file://C:\Source\Templates\docs\tools\../output/content/style.css" />
+    <script type="text/javascript" src="file://C:\Source\Templates\docs\tools\../output/content/tips.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="masthead">
+            <h3 class="muted"><a href="file://C:\Source\Templates\docs\tools\../output/index.html">Creuna Basis Slim</a></h3>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="span9" id="main">
+          
+<h2><a name="Configuration-Transformations" class="anchor" href="#Configuration-Transformations">Configuration Transformations</a></h2>
+<p>All base configuration files are in the folder <strong>Configurations</strong>.</p>
+<p>When building the solution a configuration file mathing the current configuration (if it exists) is applied as <a href="https://msdn.microsoft.com/en-us/library/dd465326(v=vs.110).aspx">Xdt-transforms</a> to the base configuration file.</p>
+<p>By default .Debug-files are ignored to each developer can have their own configuration (e.g. database connection strings or Find-index).</p>
+<p>The .Release-files are prefilled with Octopus Deploy variables used for substitution with Octopus.
+See the section about <a href="octopus.html">Octopus Deploy</a> for more information.</p>
+<h3><a name="Technical-details-and-adding-a-new-config-file" class="anchor" href="#Technical-details-and-adding-a-new-config-file">Technical details and adding a new config-file</a></h3>
+<p>The configuration transform is applied because of the [Your solution name].Web.wpp.targets-file. This is automatically run when in a project of type Web Project, and tells MSBuild to run the TransformXml-task from the Microsoft.Web.Publishing dll.</p>
+<p>The ItemGroup-element determines which configurations are eligible for transform. If you need additional configuration files transformed add this to the ItemGroup-element:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="xml"><span class="k">&lt;</span><span class="i">ConfigName</span> <span class="o">Include</span><span class="k">="NewConfig"</span><span class="k">&gt;</span>
+    <span class="k">&lt;</span><span class="i">Ext</span><span class="k">&gt;</span>config<span class="k">&lt;/</span><span class="i">Ext</span><span class="k">&gt;</span>
+<span class="k">&lt;/</span><span class="i">ConfigName</span><span class="k">&gt;</span>
+</code></pre></td></tr></table>
+<p>Optionally, you can also modify the csproj-file to nest the .Release and .Debug-files under the base.</p>
+
+
+        </div>
+        <div class="span3">
+            <a href="file://C:\Source\Templates\docs\tools\../output/index.html">
+                <img src="file://C:\Source\Templates\docs\tools\../output/img/logo.png" style="width:150px;margin:10px" />
+            </a>
+            <ul class="nav nav-list" id="menu" style="margin-top: 20px;">
+                <li class="nav-header">Creuna Basis Slim</li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/index.html">Home page</a></li>
+                <li><a href="http://github.com/Arthyon/Episerver.Basis.Slim/releases">Download</a></li>
+                <li class="divider"></li>
+                <!-- <li><a href="">Get Library via NuGet</a></li> -->
+                <li><a href="http://github.com/Arthyon/Episerver.Basis.Slim">Source Code on GitHub</a></li>
+                <li><a href="http://github.com/Arthyon/Episerver.Basis.Slim/blob/master/LICENSE.txt">License</a></li>
+                <li><a href="http://github.com/Arthyon/Episerver.Basis.Slim/blob/master/RELEASE_NOTES.md">Release Notes</a></li>
+
+
+                <li class="divider"></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/usage.html">Create</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/structure.html">Understand</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/contribute.html">Contribute</a></li>
+
+                <li class="nav-header">Features</li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/features/config-transform.html">Configuration Transformations</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/features/web-api.html">Web Api</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/features/image-resizing.html">Image Resizing</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/features/error-pages.html">404 and 500-pages</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/features/seo.html">SEO and Opengraph</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/features/search.html">Episerver Search</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/features/octopus.html">Octopus Package Generation</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/features/azure.html">Azure compatibility</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/features/edit-mode.html">Edit mode enhancements</a></li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+  </html>

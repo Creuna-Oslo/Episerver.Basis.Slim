@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>octopus</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A quickstart template for new Episerver projects">
+    <meta name="author" content="Christian Hochlin">
+
+    <script src="https://code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="file://C:\Source\Templates\docs\tools\../output/content/style.css" />
+    <script type="text/javascript" src="file://C:\Source\Templates\docs\tools\../output/content/tips.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="masthead">
+            <h3 class="muted"><a href="file://C:\Source\Templates\docs\tools\../output/index.html">Creuna Basis Slim</a></h3>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="span9" id="main">
+          
+<h2><a name="Octopus-Package-Generation" class="anchor" href="#Octopus-Package-Generation">Octopus Package Generation</a></h2>
+<p>Octopus compatibility is included in the template for creating nuget packages from a CI-system and substituting variables in configuration files.</p>
+<h3><a name="Generating-Nuget-packages" class="anchor" href="#Generating-Nuget-packages">Generating Nuget-packages</a></h3>
+<p>The package <a href="https://octopus.com/docs/packaging-applications/nuget-packages/using-octopack">Octopack</a> is added to the project. This adds a custom MSBuild target that packages your application.
+The file [Your solution name].Web.nuspec is also added to also include the contents of the folder Static (where all frontend resources should be placed).</p>
+<p>When building the solution, e.g. in TeamCity, the resulting nuget package will be in /obj/octopacked and to publish to Octopus' nuget feed, a build step of type Nuget Publish can be added.</p>
+<p>The packages can then be located using this glob pattern: <strong>**\obj\octopacked\*.nupkg</strong></p>
+<h3><a name="Transforming-configuration" class="anchor" href="#Transforming-configuration">Transforming configuration</a></h3>
+<p>The .Release-configurations include variables that Octopus will subsitute if the Package Step Substitute variables in files are active.</p>
+<p>The variables shipped by default is:</p>
+<ul>
+<li><p><strong>Db</strong>: Connection string to Episerver Database</p></li>
+<li><p><strong>AppDataPath</strong>: Path to app data folder</p></li>
+<li><p><strong>LicenseFilePath</strong>: Path to license file</p></li>
+<li><p><strong>LogDirectory</strong>: Path to directory for log files</p></li>
+<li><p><strong>SearchServer</strong>: Url to server where episerver search is hosted (include the IndexingService/IndexingService.svc-part)</p></li>
+<li><p><strong>BlobStorage</strong>: When using Azure, connection string to blob storage</p></li>
+<li><p><strong>EventBus</strong>: When using Azure, connection string to event bus</p></li>
+</ul>
+
+
+        </div>
+        <div class="span3">
+            <a href="file://C:\Source\Templates\docs\tools\../output/index.html">
+                <img src="file://C:\Source\Templates\docs\tools\../output/img/logo.png" style="width:150px;margin:10px" />
+            </a>
+            <ul class="nav nav-list" id="menu" style="margin-top: 20px;">
+                <li class="nav-header">Creuna Basis Slim</li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/index.html">Home page</a></li>
+                <li><a href="http://github.com/Arthyon/Episerver.Basis.Slim/releases">Download</a></li>
+                <li class="divider"></li>
+                <!-- <li><a href="">Get Library via NuGet</a></li> -->
+                <li><a href="http://github.com/Arthyon/Episerver.Basis.Slim">Source Code on GitHub</a></li>
+                <li><a href="http://github.com/Arthyon/Episerver.Basis.Slim/blob/master/LICENSE.txt">License</a></li>
+                <li><a href="http://github.com/Arthyon/Episerver.Basis.Slim/blob/master/RELEASE_NOTES.md">Release Notes</a></li>
+
+
+                <li class="divider"></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/usage.html">Create</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/structure.html">Understand</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/contribute.html">Contribute</a></li>
+
+                <li class="nav-header">Features</li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/features/config-transform.html">Configuration Transformations</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/features/web-api.html">Web Api</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/features/image-resizing.html">Image Resizing</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/features/error-pages.html">404 and 500-pages</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/features/seo.html">SEO and Opengraph</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/features/search.html">Episerver Search</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/features/octopus.html">Octopus Package Generation</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/features/azure.html">Azure compatibility</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/features/edit-mode.html">Edit mode enhancements</a></li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+  </html>

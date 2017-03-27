@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>image-resizing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A quickstart template for new Episerver projects">
+    <meta name="author" content="Christian Hochlin">
+
+    <script src="https://code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="file://C:\Source\Templates\docs\tools\../output/content/style.css" />
+    <script type="text/javascript" src="file://C:\Source\Templates\docs\tools\../output/content/tips.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="masthead">
+            <h3 class="muted"><a href="file://C:\Source\Templates\docs\tools\../output/index.html">Creuna Basis Slim</a></h3>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="span9" id="main">
+          
+<h2><a name="Image-Resizing" class="anchor" href="#Image-Resizing">Image Resizing</a></h2>
+<p>The template has added the <a href="https://www.nuget.org/packages/RestImageResize.EPiServer/1.1.1/">RestImageResize-package</a> that can resize requested images on the fly.</p>
+<h3><a name="Usage" class="anchor" href="#Usage">Usage</a></h3>
+<p>The image resizer intercepts requests to images and transforms if one of these parameters are set:</p>
+<ul>
+<li>width</li>
+<li>height</li>
+<li>transform</li>
+</ul>
+<p>Example of a request using image resizer:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="html"><span class="k">&lt;</span><span class="i">img</span> <span class="o">src</span><span class="k">="~/Content/Images/bigcat.JPG?width=1200&amp;height=260&amp;transform=fill"</span> <span class="k">/&gt;</span>
+</code></pre></td></tr></table>
+<p>If a new size is requested, the transformed image is placed in [appDataPath]/transformedImages/ by default. This can be changed in EpiserverFramework.config by adjusting the virtualPath of the ImagesTransformVPP virtual path provider.</p>
+<p>Helper methods to create a correct url from views are also included. These can be found in [Your solution name].Web.Business.Extensions.CmsExtensions (included by default in all views) and includes extension methods for UrlHelper.</p>
+<p>Usage:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="razor">@* From url string *@
+@Url.Image(Model.ImagePath, width: 1200, height: 260)
+
+@* From ImageData objectO *@
+@Url.Image(Model.Image, width: 1200, height: 260)
+</code></pre></td></tr></table>
+<p>See extended documentation here: <a href="https://github.com/Romanets/RestImageResize"><a href="https://github.com/Romanets/RestImageResize">https://github.com/Romanets/RestImageResize</a></a>.</p>
+<h3><a name="Relevant-Web-config-entries" class="anchor" href="#Relevant-Web-config-entries">Relevant Web.config entries</a></h3>
+<p>The resizer uses OpenWaves.ImageTransformations under the hood, which adds a couple of lines to the web.config to work.</p>
+<p>Under system.webServer, a new module called ImageTransformationsModule has been added:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="xml"><span class="k">&lt;</span><span class="i">add</span> <span class="o">name</span><span class="k">="ImageTransformationsModule"</span> 
+    <span class="o">type</span><span class="k">="OpenWaves.ImageTransformations.Web.WebImageTransformationModule, OpenWaves.ImageTransformations.Web"</span> 
+    <span class="o">preCondition</span><span class="k">="managedHandler"</span> <span class="k">/&gt;</span>
+</code></pre></td></tr></table>
+<p>Under system.web/pages/controls a new assembly reference has been added</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="xml"><span class="k">&lt;</span><span class="i">add</span> <span class="o">assembly</span><span class="k">="OpenWaves.ImageTransformations.Web"</span> 
+    <span class="o">namespace</span><span class="k">="OpenWaves.ImageTransformations.Web.Controls"</span> 
+    <span class="o">tagPrefix</span><span class="k">="ow"</span> <span class="k">/&gt;</span>
+</code></pre></td></tr></table>
+
+
+        </div>
+        <div class="span3">
+            <a href="file://C:\Source\Templates\docs\tools\../output/index.html">
+                <img src="file://C:\Source\Templates\docs\tools\../output/img/logo.png" style="width:150px;margin:10px" />
+            </a>
+            <ul class="nav nav-list" id="menu" style="margin-top: 20px;">
+                <li class="nav-header">Creuna Basis Slim</li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/index.html">Home page</a></li>
+                <li><a href="http://github.com/Arthyon/Episerver.Basis.Slim/releases">Download</a></li>
+                <li class="divider"></li>
+                <!-- <li><a href="">Get Library via NuGet</a></li> -->
+                <li><a href="http://github.com/Arthyon/Episerver.Basis.Slim">Source Code on GitHub</a></li>
+                <li><a href="http://github.com/Arthyon/Episerver.Basis.Slim/blob/master/LICENSE.txt">License</a></li>
+                <li><a href="http://github.com/Arthyon/Episerver.Basis.Slim/blob/master/RELEASE_NOTES.md">Release Notes</a></li>
+
+
+                <li class="divider"></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/usage.html">Create</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/structure.html">Understand</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/contribute.html">Contribute</a></li>
+
+                <li class="nav-header">Features</li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/features/config-transform.html">Configuration Transformations</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/features/web-api.html">Web Api</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/features/image-resizing.html">Image Resizing</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/features/error-pages.html">404 and 500-pages</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/features/seo.html">SEO and Opengraph</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/features/search.html">Episerver Search</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/features/octopus.html">Octopus Package Generation</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/features/azure.html">Azure compatibility</a></li>
+                <li><a href="file://C:\Source\Templates\docs\tools\../output/features/edit-mode.html">Edit mode enhancements</a></li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+  </html>
