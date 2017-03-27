@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<languages>
+  <language name="Norwegian" id="no">
+    <Layout>
+      <Accessibility>
+        <SkipToMainContent>Hopp til hovedinnhold</SkipToMainContent>
+      </Accessibility>
+    </Layout>
+
+    <Search>
+      <SearchButton>Søk</SearchButton>
+    </Search>
+
+    <Enums>
+      <OpenGraphType>
+        <article>Artikkel</article>
+        <product>Produkt</product>
+        <place>Sted</place>
+      </OpenGraphType>
+    </Enums>
+
+  </language>
+</languages>

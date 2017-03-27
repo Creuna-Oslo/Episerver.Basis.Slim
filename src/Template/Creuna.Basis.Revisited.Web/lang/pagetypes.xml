@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<languages>
+  <language name="Norwegian" id="NO">
+    
+    <groups>
+      <System>System</System>
+    </groups>
+    
+    <contenttypes>
+      <ContentPageBase>
+        <properties>
+          <SeoSettings>
+            <caption>SEO-innstillinger</caption>
+          </SeoSettings>
+        </properties>
+      </ContentPageBase>
+      
+      <FrontPage>
+        <name>Forside</name>
+        <description>Sidens hovedside</description>
+      </FrontPage>
+
+      <SearchPage>
+        <name>Søkeside</name>
+        <description>Viser søkeresultater</description>
+        <properties>
+          <PageSize>
+            <caption>Treff per side</caption>
+          </PageSize>
+        </properties>
+      </SearchPage>
+
+      <SeoSettingsBlock>
+        <properties>
+          <Title>
+            <caption>Tittel</caption>
+            <description>Sidenavn brukes om feltet ikke fylles ut</description>
+          </Title>
+          <MetaDescription>
+            <caption>Metabeskrivelse</caption>
+            <description>En beskrivelse av innholdet</description>
+          </MetaDescription>
+          <OpenGraphTitle>
+            <caption>Open Graph: Tittel</caption>
+            <description>Fylles ut hvis en annen tittel skal brukes for Open Graph</description>
+          </OpenGraphTitle>
+          <OpenGraphDescription>
+            <caption>Open Graph: Beskrivelse</caption>
+            <description>Fylles ut hvis en annen beskrivelse skal brukes for Open Graph</description>
+          </OpenGraphDescription>
+          <OpenGraphType>
+            <caption>Open Graph: Innholdstype</caption>
+            <description>Bestemmer hvilket type innhold siden handler om</description>
+          </OpenGraphType>
+          <OpenGraphImage>
+            <caption>Open Graph: Bilde</caption>
+            <description>Bildet som vises om siden blir delt på sosiale medier</description>
+          </OpenGraphImage>
+        </properties>
+      </SeoSettingsBlock>
+      
+    </contenttypes>
+  </language>
+</languages>
+    

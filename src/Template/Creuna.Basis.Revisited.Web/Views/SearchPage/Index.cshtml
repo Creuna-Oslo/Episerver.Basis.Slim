@@ -1,0 +1,31 @@
+﻿@using Creuna.Basis.Revisited.Web.Business
+@model SearchPageViewModel
+
+<form method="GET">
+    <input type="text" name="q" value="@Model.Query" />
+    <button type="submit">@Html.Translate("/Search/SearchButton")</button>
+</form>
+
+@foreach(var result in Model.Items)
+{
+    @Html.DisplayFor(x => result, new { Tag = ApplicationConstants.RenderingTags.Search })
+}
+
+@if (Model.TotalPages > 1)
+{
+    <ul>
+        @foreach (var page in Enumerable.Range(1, Model.TotalPages))
+        {
+            if (page == Model.CurrentPageNumber)
+            {
+                <li>@page</li>
+            }
+            else
+            {
+                <li>
+                    <a href="@Url.UrlWithQueryParameter("page", page.ToString())">@page</a>
+                </li>
+            }
+        }
+    </ul>
+}

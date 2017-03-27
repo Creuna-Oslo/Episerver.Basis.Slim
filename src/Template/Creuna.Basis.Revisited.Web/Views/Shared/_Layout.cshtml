@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="@System.Globalization.CultureInfo.CurrentUICulture.Name" data-lang="@Html.LanguageURLSegment()">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no, initial-scale=1">
+
+        @Html.Action("Metadata", "Layout")
+    </head>
+    <body>
+        <a href="#main" class="skip-to-main-link" aria-label="@Html.Translate("/Layout/Accessibility/SkipToMainContent")">
+            @Html.Translate("/Layout/Accessibility/SkipToMainContent")
+        </a>
+
+        @Html.RenderEPiServerQuickNavigator()
+
+        @Html.Action("Header", "Layout")
+
+        <main role="main" id="main">
+            @RenderBody()
+        </main>
+
+        @Html.Action("Footer", "Layout")
+    </body>
+</html>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Creuna.Basis.Revisited.Web.$package_name_suffix$</id>
+    <version>$version$</version>
+    <authors>Creuna</authors>
+    <projectUrl></projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>The Creuna.Basis.Revisited.Web deployment package</description>
+    <releaseNotes />
+  </metadata>
+  <files>
+    <file src="Static\**\*.*" target="Static" />
+  </files>
+</package>

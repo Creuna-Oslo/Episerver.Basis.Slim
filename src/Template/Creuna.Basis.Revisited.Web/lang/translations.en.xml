@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<languages>
+  <language name="English" id="en">
+    <Layout>
+      <Accessibility>
+        <SkipToMainContent>Skip to main content</SkipToMainContent>
+      </Accessibility>
+    </Layout>
+
+    <Search>
+      <SearchButton>Search</SearchButton>
+    </Search>
+    
+    <Enums>
+      <OpenGraphType>
+        <article>Article</article>
+        <product>Product</product>
+        <place>Place</place>
+      </OpenGraphType>
+    </Enums>
+    
+  </language>
+</languages>

@@ -1,0 +1,10 @@
+build/**/*
+packages/**/*
+temp/**/*
+docs/output/**/*
+.paket/paket.exe
+.fake/**/*
+
+src/BuildScripts/.paket/paket.exe
+src/BuildScripts/packages/**/*
+src/BuildScripts/.fake/**/*

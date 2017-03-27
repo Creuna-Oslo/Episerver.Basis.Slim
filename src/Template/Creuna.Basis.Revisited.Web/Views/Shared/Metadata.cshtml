@@ -1,0 +1,36 @@
+﻿@model Creuna.Basis.Revisited.Web.Models.ViewModels.Layout.SeoSettingsViewModel
+
+@{ 
+    var title = string.IsNullOrEmpty(Model.SeoSettings.Title)
+        ? Model.CurrentPage.PageName
+        : Model.SeoSettings.Title;
+
+    var absoluteUrl = Url.AbsoluteUrl(Model.CurrentPage.ContentLink);
+
+    var imageUrl = Model.SeoSettings.OpenGraphImage != null
+        ? Url.AbsoluteUrl(Model.SeoSettings.OpenGraphImage)
+        : string.Empty;
+}
+
+@helper RenderPropertyIfNotEmpty(string propertyName, string value)
+{ 
+    if (!string.IsNullOrEmpty(value))
+    {
+        <meta property="@propertyName" content="@value" />
+    }
+}
+
+<title>@title</title>
+
+<meta name="title" content="@title" />
+
+@if (!string.IsNullOrEmpty(Model.SeoSettings.MetaDescription))
+{
+    <meta name="description" content="@Model.SeoSettings.MetaDescription" />
+}
+
+@RenderPropertyIfNotEmpty("og:title", Model.SeoSettings.OpenGraphTitle ?? title)
+@RenderPropertyIfNotEmpty("og:description", Model.SeoSettings.OpenGraphDescription ?? Model.SeoSettings.MetaDescription)
+@RenderPropertyIfNotEmpty("og:url", absoluteUrl)
+@RenderPropertyIfNotEmpty("og:type", Model.SeoSettings.OpenGraphType.ToString())
+@RenderPropertyIfNotEmpty("og:image", imageUrl)
