@@ -22,6 +22,18 @@ namespace Creuna.Basis.Revisited.Web.App_Start
                 url: "error/404",
                 defaults: new { controller = "ErrorPages", action = "NotFound" }
             );
+
+            routes.MapRoute(
+                name: ApplicationConstants.CustomRoutes.Login,
+                url: "login",
+                defaults: new { controller = "Account", action = "Login" }
+            );
+
+            routes.MapRoute(
+                name: ApplicationConstants.CustomRoutes.Logout,
+                url: "logout",
+                defaults: new { controller = "Account", action = "Logout" }
+            );
         }
 
         public void Uninitialize(InitializationEngine context) {}

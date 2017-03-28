@@ -1,0 +1,18 @@
+﻿@model LoginViewModel
+
+@Html.ValidationSummary(excludePropertyErrors: true)
+
+<form method="POST">
+    @Html.LabelFor(model => model.Username, Html.Translate("/Account/Labels/Username"))
+    @Html.TextBoxFor(model => model.Username)
+    @Html.ValidationMessageFor(i => i.Username, Html.Translate("/Account/Validation/RequiredUsername"))
+
+    @Html.LabelFor(model => model.Password, Html.Translate("/Account/Labels/Password"))
+    @Html.PasswordFor(model => model.Password)
+    @Html.ValidationMessageFor(i => i.Password, Html.Translate("/Account/Validation/RequiredPassword"))
+
+    @Html.LabelFor(model => model.PersistLogin, Html.Translate("/Account/Labels/PersistLogin"))
+    @Html.CheckBoxFor(model => model.PersistLogin)
+
+    <button type="submit">@Html.Translate("/Account/LogIn")</button>
+</form>

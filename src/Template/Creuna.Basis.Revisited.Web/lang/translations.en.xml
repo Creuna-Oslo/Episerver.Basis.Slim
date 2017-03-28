@@ -10,6 +10,19 @@
     <Search>
       <SearchButton>Search</SearchButton>
     </Search>
+    <Account>
+      <LoginFailed>Login failed</LoginFailed>
+      <LogIn>Log in</LogIn>
+      <Labels>
+        <Username>Username</Username>
+        <Password>Password</Password>
+        <PersistLogin>Remember me</PersistLogin>
+      </Labels>
+      <Validation>
+        <RequiredUsername>Username is required</RequiredUsername>
+        <RequiredPassword>Password is required</RequiredPassword>
+      </Validation>
+    </Account>
     
     <Enums>
       <OpenGraphType>

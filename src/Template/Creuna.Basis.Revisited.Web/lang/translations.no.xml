@@ -10,6 +10,20 @@
     <Search>
       <SearchButton>Søk</SearchButton>
     </Search>
+    <Account>
+      <LoginFailed>Påloggingen mislyktes</LoginFailed>
+      <LogIn>Logg inn</LogIn>
+      <Labels>
+        <Username>Brukernavn</Username>
+        <Password>Passord</Password>
+        <PersistLogin>Husk meg</PersistLogin>
+      </Labels>
+      <Validation>
+        <RequiredUsername>Du må oppgi brukernavn</RequiredUsername>
+        <RequiredPassword>Du må oppgi passord</RequiredPassword>
+      </Validation>
+    </Account>
+
 
     <Enums>
       <OpenGraphType>

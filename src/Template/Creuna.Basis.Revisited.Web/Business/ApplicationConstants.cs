@@ -21,6 +21,8 @@
         {
             public const string NotFound = "NotFoundRoute";
             public const string InternalServerError = "InternalServerErrorRoute";
+            public const string Login = "LoginRoute";
+            public const string Logout = "LogoutRoute";
         }
     }
 }

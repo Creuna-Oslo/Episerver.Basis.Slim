@@ -1,3 +1,6 @@
+#### 1.1.0 - 28.03.2017
+* Added custom login page
+
 #### 1.0.2 - 28.03.2017
 * Changed [tab initialization](https://arthyon.github.io/Episerver.Basis.Slim/features/edit-mode.html#Tab-ordering-and-access-control) from initializable module to attribute-based
 
