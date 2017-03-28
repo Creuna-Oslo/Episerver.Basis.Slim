@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>config-transform</title>
+    <title>custom-login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A quickstart template for new Episerver projects">
     <meta name="author" content="Christian Hochlin">
@@ -28,24 +28,42 @@
       <div class="row">
         <div class="span9" id="main">
           
-<h2><a name="Configuration-Transformations" class="anchor" href="#Configuration-Transformations">Configuration Transformations</a></h2>
-<p>All base configuration files are in the folder <strong>Configurations</strong>.</p>
-<p>When building the solution a configuration file matching the current configuration (if it exists) is applied as <a href="https://msdn.microsoft.com/en-us/library/dd465326(v=vs.110).aspx">Xdt-transforms</a> to the base configuration file.</p>
-<p>By default .Debug-files are ignored to each developer can have their own configuration (e.g. database connection strings or Find-index).</p>
-<p>The .Release-files are prefilled with Octopus Deploy variables used for substitution with Octopus.
-See the section about <a href="octopus.html">Octopus Deploy</a> for more information.</p>
-<h3><a name="Technical-details-and-adding-a-new-config-file" class="anchor" href="#Technical-details-and-adding-a-new-config-file">Technical details and adding a new config-file</a></h3>
-<p>The configuration transform is applied because of the [Your solution name].Web.wpp.targets-file. This is automatically run when in a project of type Web Project, and tells MSBuild to run the TransformXml-task from the Microsoft.Web.Publishing dll.</p>
-<p>The ItemGroup-element determines which configurations are eligible for transform. If you need additional configuration files transformed add this to the ItemGroup-element:</p>
+<h2><a name="Custom-login-page" class="anchor" href="#Custom-login-page">Custom login page</a></h2>
+<p>A lot of Episerver solutions will eventually let its users register and log in, or at least provide their editors with a branded login page.
+The template includes an unstyled login-form with localization enabled, backed by .Net Membership.</p>
+<p>Login and logout routes are mapped to AccountController, and the forms authentication-element in web.config has been set to point to the login-route when the site issues a 401 Unauthorized challenge, typically by using the [Authorize]-attribute on a controller or method.</p>
+<p>The controller's job is setting the correct language, based on the returnUrl-parameter, showing the login form and collecting information from the user.
+An interface named IUserAuthenticationHandler is injected to take care of the actual authentication.</p>
+<p>A .Net membership implementation is included, and its implementation of the interface is wired up in WebRegistry.</p>
+<h3><a name="Changing-the-login-url" class="anchor" href="#Changing-the-login-url">Changing the login url</a></h3>
+<p>If a specific url for the login forms is wanted, it is easy to change it.</p>
+<ul>
+<li>In Configurations/Web.config, find the forms-element and change the loginUrl-parameter to your desired url.</li>
+<li>In MvcRoutesInitializer, change the url-argument of the login-route to the same url.</li>
+</ul>
+<h3><a name="Switching-User-Provider" class="anchor" href="#Switching-User-Provider">Switching User Provider</a></h3>
+<p>If the project uses a different provider, e.g. ASP.Net Identity, the easiest way to integrate with it is to create a new implementation of the interface IUserAuthenticationHandler that works with your chosen provider and replace the existing implementation in WebRegistry.</p>
+<p>For SSO-style authentication, refer to the next section on reverting to the normal episerver login, as it is easier to follow from a clean slate.</p>
+<h3><a name="Reverting-to-the-normal-episerver-login" class="anchor" href="#Reverting-to-the-normal-episerver-login">Reverting to the normal episerver login</a></h3>
+<p>The easiest way to revert to the original is to change this line in Configurations/Web.config:</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
-<span class="l">2: </span>
-<span class="l">3: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="xml"><span class="k">&lt;</span><span class="i">ConfigName</span> <span class="o">Include</span><span class="k">="NewConfig"</span><span class="k">&gt;</span>
-    <span class="k">&lt;</span><span class="i">Ext</span><span class="k">&gt;</span>config<span class="k">&lt;/</span><span class="i">Ext</span><span class="k">&gt;</span>
-<span class="k">&lt;/</span><span class="i">ConfigName</span><span class="k">&gt;</span>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="xml"><span class="k">&lt;</span><span class="i">forms</span> <span class="o">name</span><span class="k">=".EPiServerLogin"</span> <span class="o">loginUrl</span><span class="k">="login"</span> <span class="o">timeout</span><span class="k">="120"</span> <span class="o">defaultUrl</span><span class="k">="~/"</span> <span class="k">/&gt;</span>
 </code></pre></td></tr></table>
-<p>Optionally, you can also modify the csproj-file to nest the .Release and .Debug-files under the base.</p>
+<p>back to</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="xml"><span class="k">&lt;</span><span class="i">forms</span> <span class="o">name</span><span class="k">=".EPiServerLogin"</span> <span class="o">loginUrl</span><span class="k">="Util/Login.aspx"</span> <span class="o">timeout</span><span class="k">="120"</span> <span class="o">defaultUrl</span><span class="k">="~/"</span> <span class="k">/&gt;</span>
+</code></pre></td></tr></table>
+<p>To completely remove all traces, remove this as well:</p>
+<ul>
+<li>The two routes in MvcRoutesInitializer</li>
+<li>The custom route constants Login and Logout in ApplicationConstants.CustomRoutes</li>
+<li>AccountController.cs</li>
+<li>The folder Account in Views</li>
+<li>The folder UserHandling in ~/Business</li>
+<li>The Registry entry connecting the UserHandler-interface with its implementation in WebRegistry</li>
+</ul>
 
 
         </div>
