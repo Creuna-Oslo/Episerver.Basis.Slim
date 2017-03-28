@@ -49,14 +49,14 @@
 <span class="l">8: </span>
 <span class="l">9: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip"><code lang="CSharp">[TemplateDescriptor(TemplateTypeCategory = TemplateTypeCategories.MvcPartialController, 
-    Inherited = true, 
-    AvailableWithoutTag = false, 
-    Tags = new[] { ApplicationConstants.RenderingTags.Search })]
-public class MyNewPageSearchResultController : PartialContentController&lt;MyNewPage&gt;
+<td class="snippet"><pre class="fssnip highlighted"><code lang="csharp">[TemplateDescriptor(TemplateTypeCategory <span class="o">=</span> TemplateTypeCategories.MvcPartialController, 
+    Inherited <span class="o">=</span> <span class="k">true</span>, 
+    AvailableWithoutTag <span class="o">=</span> <span class="k">false</span>, 
+    Tags <span class="o">=</span> <span class="k">new</span>[] { ApplicationConstants.RenderingTags.Search })]
+<span class="k">public</span> <span class="k">class</span> MyNewPageSearchResultController <span class="o">:</span> PartialContentController&lt;MyNewPage&gt;
 {
-    public override ActionResult Index(MyNewPage currentPage) 
-        =&gt; PartialView("~/Views/MyNewPage/SearchResult.cshtml", currentPage);
+    <span class="k">public</span> <span class="k">override</span> ActionResult Index(MyNewPage currentPage) 
+        <span class="o">=</span><span class="o">&gt;</span> PartialView(<span class="s">"~/Views/MyNewPage/SearchResult.cshtml"</span>, currentPage);
 }
 </code></pre></td></tr></table>
 <p>If no template is specified it will fall back to a generic search template found at ~/Views/SearchPage/GenericSearchResult.cshtml.</p>

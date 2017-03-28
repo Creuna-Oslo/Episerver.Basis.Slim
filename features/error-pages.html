@@ -49,11 +49,11 @@ In case one of the assets are returning 404 we won't end up in a loop as the 404
 <span class="l">5: </span>
 <span class="l">6: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="xml"> <span class="k">&lt;</span><span class="i">httpErrors</span> <span class="o">errorMode</span><span class="k">="Custom"</span> <span class="o">existingResponse</span><span class="k">="Auto"</span><span class="k">&gt;</span>
-  <span class="k">&lt;</span><span class="i">remove</span> <span class="o">statusCode</span><span class="k">="404"</span> <span class="k">/&gt;</span>
-  <span class="k">&lt;</span><span class="i">remove</span> <span class="o">statusCode</span><span class="k">="500"</span> <span class="k">/&gt;</span>
-  <span class="k">&lt;</span><span class="i">error</span> <span class="o">statusCode</span><span class="k">="404"</span> <span class="o">path</span><span class="k">="/error/404"</span> <span class="o">responseMode</span><span class="k">="ExecuteURL"</span> <span class="k">/&gt;</span>
-  <span class="k">&lt;</span><span class="i">error</span> <span class="o">statusCode</span><span class="k">="500"</span> <span class="o">path</span><span class="k">="500.html"</span> <span class="o">responseMode</span><span class="k">="File"</span> <span class="k">/&gt;</span>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="xml"><span class="k">&lt;</span><span class="i">httpErrors</span> <span class="o">errorMode</span><span class="k">="Custom"</span> <span class="o">existingResponse</span><span class="k">="Auto"</span><span class="k">&gt;</span>
+    <span class="k">&lt;</span><span class="i">remove</span> <span class="o">statusCode</span><span class="k">="404"</span> <span class="k">/&gt;</span>
+    <span class="k">&lt;</span><span class="i">remove</span> <span class="o">statusCode</span><span class="k">="500"</span> <span class="k">/&gt;</span>
+    <span class="k">&lt;</span><span class="i">error</span> <span class="o">statusCode</span><span class="k">="404"</span> <span class="o">path</span><span class="k">="/error/404"</span> <span class="o">responseMode</span><span class="k">="ExecuteURL"</span> <span class="k">/&gt;</span>
+    <span class="k">&lt;</span><span class="i">error</span> <span class="o">statusCode</span><span class="k">="500"</span> <span class="o">path</span><span class="k">="500.html"</span> <span class="o">responseMode</span><span class="k">="File"</span> <span class="k">/&gt;</span>
 <span class="k">&lt;/</span><span class="i">httpErrors</span><span class="k">&gt;</span>
 </code></pre></td></tr></table>
 
