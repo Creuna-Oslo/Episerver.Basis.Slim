@@ -14,9 +14,10 @@ The configuration transform is applied because of the [Your solution name].Web.w
 
 The ItemGroup-element determines which configurations are eligible for transform. If you need additional configuration files transformed add this to the ItemGroup-element:
 
-    [lang=xml]
-    <ConfigName Include="NewConfig">
-        <Ext>config</Ext>
-    </ConfigName>
+```xml
+<ConfigName Include="NewConfig">
+    <Ext>config</Ext>
+</ConfigName>
+```
 
 Optionally, you can also modify the csproj-file to nest the .Release and .Debug-files under the base.

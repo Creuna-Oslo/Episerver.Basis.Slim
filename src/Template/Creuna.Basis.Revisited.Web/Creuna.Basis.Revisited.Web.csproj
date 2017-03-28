@@ -384,13 +384,13 @@
     <Compile Include="App_Start\Structuremap\StructureMapDependencyResolver.cs" />
     <Compile Include="App_Start\Structuremap\StructureMapDependencyScope.cs" />
     <Compile Include="App_Start\ImageResizeInitializer.cs" />
-    <Compile Include="App_Start\TabInitializer.cs" />
     <Compile Include="App_Start\WebApiInitializer.cs" />
     <Compile Include="App_Start\StructureMapInitializer.cs" />
     <Compile Include="App_Start\WebRegistry.cs" />
     <Compile Include="Business\ApplicationConstants.cs" />
     <Compile Include="Business\Extensions\CmsExtensions.cs" />
     <Compile Include="Business\SelectionFactories\EnumStringSelectionFactory.cs" />
+    <Compile Include="Business\TabNames.cs" />
     <Compile Include="Business\Validation\MaxContentAreaItemCountAttribute.cs" />
     <Compile Include="Controllers\FrontPageController.cs" />
     <Compile Include="Controllers\LayoutController.cs" />

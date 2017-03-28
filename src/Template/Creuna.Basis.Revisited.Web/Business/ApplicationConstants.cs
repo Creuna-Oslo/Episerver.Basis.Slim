@@ -17,11 +17,6 @@
             public const string System = "System";
         }
 
-        public static class TabNames
-        {
-            public const string Seo = "SEO";
-        }
-
         public static class CustomRoutes
         {
             public const string NotFound = "NotFoundRoute";

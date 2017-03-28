@@ -18,16 +18,17 @@ A search page using Episerver Search is included and can be created in the hiera
 
 Each page can determine how its search result should be rendered by implementing a partial controller for the rendering tag Search. 
 
-    [lang=CSharp]
-    [TemplateDescriptor(TemplateTypeCategory = TemplateTypeCategories.MvcPartialController, 
-        Inherited = true, 
-        AvailableWithoutTag = false, 
-        Tags = new[] { ApplicationConstants.RenderingTags.Search })]
-    public class MyNewPageSearchResultController : PartialContentController<MyNewPage>
-    {
-        public override ActionResult Index(MyNewPage currentPage) 
-            => PartialView("~/Views/MyNewPage/SearchResult.cshtml", currentPage);
-    }
+```csharp
+[TemplateDescriptor(TemplateTypeCategory = TemplateTypeCategories.MvcPartialController, 
+    Inherited = true, 
+    AvailableWithoutTag = false, 
+    Tags = new[] { ApplicationConstants.RenderingTags.Search })]
+public class MyNewPageSearchResultController : PartialContentController<MyNewPage>
+{
+    public override ActionResult Index(MyNewPage currentPage) 
+        => PartialView("~/Views/MyNewPage/SearchResult.cshtml", currentPage);
+}
+```
 
 If no template is specified it will fall back to a generic search template found at ~/Views/SearchPage/GenericSearchResult.cshtml.
 

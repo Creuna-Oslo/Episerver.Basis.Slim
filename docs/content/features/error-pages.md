@@ -24,12 +24,13 @@ Add a new route to an action on the ErrorPages controller and a new view under /
 
 The redirect is enabled in web.config under system.webServer:
 
-    [lang=xml]
-     <httpErrors errorMode="Custom" existingResponse="Auto">
-      <remove statusCode="404" />
-      <remove statusCode="500" />
-      <error statusCode="404" path="/error/404" responseMode="ExecuteURL" />
-      <error statusCode="500" path="500.html" responseMode="File" />
-    </httpErrors>
+```xml
+<httpErrors errorMode="Custom" existingResponse="Auto">
+    <remove statusCode="404" />
+    <remove statusCode="500" />
+    <error statusCode="404" path="/error/404" responseMode="ExecuteURL" />
+    <error statusCode="500" path="500.html" responseMode="File" />
+</httpErrors>
+```
 
 

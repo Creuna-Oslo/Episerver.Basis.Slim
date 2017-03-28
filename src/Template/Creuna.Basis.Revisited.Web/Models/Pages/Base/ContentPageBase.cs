@@ -7,7 +7,7 @@ namespace Creuna.Basis.Revisited.Web.Models.Pages.Base
 {
     public abstract class ContentPageBase : PageData
     {
-        [Display(Name = "SEO Settings", Order = 10, GroupName = ApplicationConstants.TabNames.Seo)]
+        [Display(Name = "SEO Settings", Order = 10, GroupName = TabNames.Seo)]
         public virtual SeoSettingsBlock SeoSettings { get; set; }
     }
 }
