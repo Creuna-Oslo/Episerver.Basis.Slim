@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>edit-mode</title>
+    <title>razor-helpers</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A quickstart template for new Episerver projects">
     <meta name="author" content="Christian Hochlin">
@@ -28,29 +28,47 @@
       <div class="row">
         <div class="span9" id="main">
           
-<h2><a name="Edit-Mode-features" class="anchor" href="#Edit-Mode-features">Edit Mode features</a></h2>
-<p>Some extra features are included for edit mode.</p>
-<h3><a name="Enum-translations" class="anchor" href="#Enum-translations">Enum translations</a></h3>
-<p>A selection factory, <strong>EnumSelectionFactory<TEnum></strong>, is added that enables translations of an enum.
-It can be found in the namespace [Your solution name].Web.Business.SelectionFactories</p>
+<h2><a name="Razor-Helpers" class="anchor" href="#Razor-Helpers">Razor Helpers</a></h2>
+<p>Some Razor helpers are included in the template. They are located ~/Business/Views.
+That namespace is included by default in all views, so no need to add @using-statements.</p>
+<h3><a name="Razor-Section-with-default-content" class="anchor" href="#Razor-Section-with-default-content">Razor Section with default content</a></h3>
+<p>In Razor, a section cannot have default content if not defined, unlike placeholders in Web Forms.</p>
+<p>A method is included to make this possible.
+The approach is borrowed from <a href="http://haacked.com/archive/2011/03/05/defining-default-content-for-a-razor-layout-section.aspx/">Phil Haack</a>.</p>
+<p>To create a new optional section with default content this snippet can be used in your views:</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="csharp">[SelectOne(SelectionFactoryType <span class="o">=</span> <span class="k">typeof</span>(EnumSelectionFactory&lt;OpenGraphType&gt;))]
+<td class="snippet"><pre class="fssnip highlighted"><code lang="csharp">@RenderSection(<span class="s">"SomeSection"</span>, () <span class="o">=</span><span class="o">&gt;</span> Html.Action(<span class="s">"DefaultContent"</span>, <span class="s">"Layout"</span>))
 </code></pre></td></tr></table>
-<p>The translations are fetched from lang/translations.[lang] using the xpath /Enums/[enumtype]/[stringvalue].</p>
-<h3><a name="Tab-ordering-and-access-control" class="anchor" href="#Tab-ordering-and-access-control">Tab ordering and access control</a></h3>
-<p>To add a new tab, add the tab name to the TabNames-class. An attribute to determine order and required access should be added.</p>
+<p>The return value of the anonymous method can be any MvcHtmlString.</p>
+<h3><a name="Strongly-types-Content-Area-Options" class="anchor" href="#Strongly-types-Content-Area-Options">Strongly types Content Area Options</a></h3>
+<p>Episerver has a couple of magic parameters to pass to a content area to determine the rendering. As they are passed as an anonymous object, intellisense cannot help. This extension provides a class to provide strongly typed access to these properties.</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 <span class="l">2: </span>
 <span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+<span class="l">6: </span>
+<span class="l">7: </span>
+<span class="l">8: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="csharp">[Display(Name <span class="o">=</span> <span class="s">"SEO"</span>, Order <span class="o">=</span> <span class="n">1000</span>)]
-[RequiredAccess(AccessLevel.Edit)]
-<span class="k">public</span> <span class="k">const</span> <span class="k">string</span> Seo <span class="o">=</span> <span class="s">"SEO"</span>;
+<td class="snippet"><pre class="fssnip highlighted"><code lang="csharp">@Html.ContentArea(i <span class="o">=</span><span class="o">&gt;</span> i.MyContentArea, <span class="k">new</span> ContentAreaOptions
+{
+    ChildrenCssClass <span class="o">=</span> <span class="s">"some-class"</span>,
+    ChildrenCustomTag <span class="o">=</span> <span class="s">"some-html-tag"</span>,
+    CssClass <span class="o">=</span> <span class="s">"some-class"</span>,
+    CustomTag <span class="o">=</span> <span class="s">"some-html-tag"</span>,
+    RenderingTag <span class="o">=</span> <span class="s">"some-rendering-tag"</span>
+})
 </code></pre></td></tr></table>
-<h3><a name="Max-Content-Area-items" class="anchor" href="#Max-Content-Area-items">Max Content Area items</a></h3>
-<p>To limit the number of elements in a content area, add the attribute [MaxContentAreaItemCount(Limit = X)] to the property.
-This can be found in the [Your solution name].Web.Business.Validation-namespace.</p>
+<h3><a name="Url-Helpers" class="anchor" href="#Url-Helpers">Url Helpers</a></h3>
+<p>A couple of helpers to manage urls are included.</p>
+<ul>
+<li>Converting a ContentReference, relative url or EPiServer.Url to absolute url</li>
+<li>Helper to create link to a <a href="image-resizing.html">resized image</a> from url or ImageData</li>
+<li>Method to replace single query parameter in url</li>
+<li>Get language segment from current url</li>
+</ul>
 
 
         </div>
