@@ -13,10 +13,16 @@ let DetermineBaseDirectory argv =
     | head :: tail when IsValidDirectory head -> head
     | _ -> Environment.CurrentDirectory
 
+let PrintVersionInformation () =
+    printfn "%s" AssemblyVersionInformation.AssemblyTitle
+    printfn "%s" AssemblyVersionInformation.AssemblyDescription
+    printfn "Version: %s" AssemblyVersionInformation.AssemblyVersion
 
 
 [<EntryPoint>]
 let main argv = 
+    PrintVersionInformation ()
+    
     let scaffoldingDirectory = argv |> Array.toList |> DetermineBaseDirectory
     printfn "Scaffolding to %s" scaffoldingDirectory
     StartBuild scaffoldingDirectory

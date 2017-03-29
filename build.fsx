@@ -62,10 +62,10 @@ Target "PackageTemplate" (fun _ ->
 )
 
 Target "PackageBuildScripts" (fun _ ->
-    let directory = buildDir + "scripts/"
+    let outputDirectory = buildDir 
     CopyDir scriptTemp buildScripts (fun _ -> true)
-    CopyFile directory (buildDir + "Template.zip")
-    ZipHelper.Zip (__SOURCE_DIRECTORY__ + "/" + scriptTemp) (directory + "Script.zip") (!!(scriptTemp + "/**"))
+    CopyFile scriptTemp (buildDir + "Template.zip")
+    ZipHelper.Zip (__SOURCE_DIRECTORY__ + "/" + scriptTemp) (outputDirectory + "Scripts.zip") (!!(scriptTemp + "/**"))
     
 )
 
@@ -84,9 +84,18 @@ Target "BuildApp" (fun _ ->
 
 )
 
+Target "GenerateAssemblyVersion" (fun _ ->
+    AssemblyInfoFile.CreateFSharpAssemblyInfo "src/BuildApp/Scaffolding.Build/AssemblyInfo.fs"
+        [
+            Attribute.Title "Episerver Basis Slim Scaffolder"
+            Attribute.Version release.AssemblyVersion
+            Attribute.Description "Use this to scaffold a solution in the working directory. Will optionally take an argument that specifies the directory to scaffold to."
+        ]
+)
+
 Target "PackageApp" (fun _ ->
     let bin = buildApp + "/bin/Release"
-    let outputPath = buildDir + "/app"
+    let outputPath = buildDir
     let version = release.AssemblyVersion
 
     let dlls = Directory.GetFiles(bin, "*.dll") |> Array.toList
@@ -104,6 +113,10 @@ Target "PackageApp" (fun _ ->
 
     ()
 
+)
+
+Target "Cleanup" (fun _ ->
+    FileHelper.DeleteFiles [buildDir + "Template.zip" ; buildDir + "scaffolding.exe.config"]
 )
 
 // ---------------------------
@@ -217,8 +230,10 @@ Target "Start" DoNothing
   ==> "ReplaceRootNamespace"
   ==> "PackageTemplate"
   ==> "PackageBuildScripts"
+  ==> "GenerateAssemblyVersion"
   ==> "BuildApp"
   ==> "PackageApp"
+  ==> "Cleanup"
   ==> "Default"
 
 

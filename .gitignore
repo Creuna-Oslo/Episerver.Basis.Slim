@@ -1,5 +1,6 @@
 build/**/*
 packages/**/*
+scriptTemp/**/*
 temp/**/*
 docs/output/**/*
 .paket/paket.exe
