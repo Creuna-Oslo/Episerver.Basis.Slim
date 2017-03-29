@@ -389,12 +389,13 @@
     <Compile Include="App_Start\StructureMapInitializer.cs" />
     <Compile Include="App_Start\WebRegistry.cs" />
     <Compile Include="Business\ApplicationConstants.cs" />
-    <Compile Include="Business\Extensions\CmsExtensions.cs" />
+    <Compile Include="Business\Views\CmsExtensions.cs" />
     <Compile Include="Business\SelectionFactories\EnumStringSelectionFactory.cs" />
     <Compile Include="Business\TabNames.cs" />
     <Compile Include="Business\UserHandling\IUserAuthenticationHandler.cs" />
     <Compile Include="Business\UserHandling\MembershipUserAuthenticationHandler.cs" />
     <Compile Include="Business\Validation\MaxContentAreaItemCountAttribute.cs" />
+    <Compile Include="Business\Views\CmsViewPage.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FrontPageController.cs" />
     <Compile Include="Controllers\LayoutController.cs" />

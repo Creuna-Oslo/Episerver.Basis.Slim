@@ -1,5 +1,5 @@
 ﻿using Creuna.Basis.Revisited.Web.Business;
-using Creuna.Basis.Revisited.Web.Business.Extensions;
+using Creuna.Basis.Revisited.Web.Business.Views;
 using Creuna.Basis.Revisited.Web.Models.Pages;
 using Creuna.Basis.Revisited.Web.Models.ViewModels;
 using Creuna.Basis.Revisited.Web.Search;

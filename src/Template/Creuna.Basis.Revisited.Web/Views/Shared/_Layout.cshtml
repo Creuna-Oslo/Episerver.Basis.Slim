@@ -13,6 +13,8 @@
 
         @Html.RenderEPiServerQuickNavigator()
 
+        @RenderSection("SomeSection", () => Html.Action("DefaultContent", "Layout"))
+
         @Html.Action("Header", "Layout")
 
         <main role="main" id="main">

@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Creuna.Basis.Revisited.Web.Business.Extensions
+namespace Creuna.Basis.Revisited.Web.Business.Views
 {
     public static class CmsExtensions
     {
