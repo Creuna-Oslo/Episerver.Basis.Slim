@@ -1,4 +1,5 @@
-﻿using System.Web.Security;
+﻿using System;
+using System.Web.Security;
 
 namespace Creuna.Basis.Revisited.Web.Business.UserHandling
 {
@@ -9,11 +10,19 @@ namespace Creuna.Basis.Revisited.Web.Business.UserHandling
     {
         public bool Login(string username, string password, bool persistLogin)
         {
-            var validCredentials = Membership.ValidateUser(username, password);
-            if (validCredentials)
-                FormsAuthentication.SetAuthCookie(username, persistLogin);
+            try
+            {
+                var validCredentials = Membership.ValidateUser(username, password);
+                if (validCredentials)
+                    FormsAuthentication.SetAuthCookie(username, persistLogin);
 
-            return validCredentials;
+                return validCredentials;
+            }
+            catch (SystemException)
+            {
+                // Happens when trying to log in with a user that doesn't exist in AD
+                return false;
+            }
         }
 
         public void Logout()
