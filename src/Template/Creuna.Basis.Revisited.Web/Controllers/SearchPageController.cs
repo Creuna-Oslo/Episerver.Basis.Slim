@@ -23,7 +23,7 @@ namespace Creuna.Basis.Revisited.Web.Controllers
 
         public ActionResult Index(SearchPage currentPage, string q, int page = 1)
         {
-            var query = new SearchQuery(q, page, currentPage.PageSize, CmsExtensions.LanguageURLSegment());
+            var query = new SearchQuery(q, page, currentPage.PageSize, UrlHelperExtensions.LanguageURLSegment());
             var result = SearchService.Search(query);
 
             return View(new SearchPageViewModel(q, query.Page, query.PageSize, currentPage, result));

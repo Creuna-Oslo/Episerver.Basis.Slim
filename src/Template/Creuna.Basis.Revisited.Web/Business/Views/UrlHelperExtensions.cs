@@ -11,12 +11,12 @@ using System.Web.Mvc;
 
 namespace Creuna.Basis.Revisited.Web.Business.Views
 {
-    public static class CmsExtensions
+    public static class UrlHelperExtensions
     {
         /// <summary>
         /// Returns the HtmlString representation of the currently active language segment
         /// </summary>
-        public static IHtmlString LanguageURLSegment(this HtmlHelper html)
+        public static IHtmlString LanguageURLSegment(this UrlHelper html)
         {
             var segment = LanguageURLSegment();
             return new HtmlString(segment);

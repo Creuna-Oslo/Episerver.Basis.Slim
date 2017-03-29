@@ -389,7 +389,8 @@
     <Compile Include="App_Start\StructureMapInitializer.cs" />
     <Compile Include="App_Start\WebRegistry.cs" />
     <Compile Include="Business\ApplicationConstants.cs" />
-    <Compile Include="Business\Views\CmsExtensions.cs" />
+    <Compile Include="Business\Views\ContentAreaExtensions.cs" />
+    <Compile Include="Business\Views\UrlHelperExtensions.cs" />
     <Compile Include="Business\SelectionFactories\EnumStringSelectionFactory.cs" />
     <Compile Include="Business\TabNames.cs" />
     <Compile Include="Business\UserHandling\IUserAuthenticationHandler.cs" />

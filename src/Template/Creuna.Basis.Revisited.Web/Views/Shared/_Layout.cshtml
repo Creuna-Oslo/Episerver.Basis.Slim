@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html class="no-js" lang="@System.Globalization.CultureInfo.CurrentUICulture.Name" data-lang="@Html.LanguageURLSegment()">
+<html class="no-js" lang="@System.Globalization.CultureInfo.CurrentUICulture.Name" data-lang="@Url.LanguageURLSegment()">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no, initial-scale=1">
@@ -12,8 +12,6 @@
         </a>
 
         @Html.RenderEPiServerQuickNavigator()
-
-        @RenderSection("SomeSection", () => Html.Action("DefaultContent", "Layout"))
 
         @Html.Action("Header", "Layout")
 
