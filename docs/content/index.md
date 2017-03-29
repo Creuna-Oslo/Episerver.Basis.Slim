@@ -7,9 +7,9 @@
 
 On windows:
 
-  * Download and unzip the latest release and run build.cmd from a command line.
-  * After dependencies are downloaded, you will be prompted for the name of the Solution.
-  * Afterwards the install script will clean up after itself and your new project is ready.
+  * Download the [latest scaffolding.exe](http://github.com/Arthyon/Episerver.Basis.Slim/releases).
+  * Run the exe and choose a name for your solution
+  * The project will be placed in folder named after the name you chose
 
 
 
