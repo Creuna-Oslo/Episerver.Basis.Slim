@@ -16,6 +16,7 @@ open System.Text.RegularExpressions
 // (used by attributes in AssemblyInfo, name of a NuGet package and directory in 'src')
 let templateDir = "src/Template"
 let buildScripts = "src/BuildScripts"
+let buildApp = "src/BuildApp/Scaffolding.Build/"
 let defaultRootNamespace = "Creuna.Basis.Revisited"
 let tokenNamespace = "$solutionname$" // This is also added as default root namespace in buildScripts/build.fsx
 
@@ -36,6 +37,7 @@ let buildVersion = sprintf "%s-a%s" release.NugetVersion (DateTime.UtcNow.ToStri
 
 let buildDir = "build/"
 let tempDir = "temp/"
+let scriptTemp = "scriptTemp/"
 
 // --------------------------------------------------------------------------------------
 // Clean build results
@@ -59,10 +61,51 @@ Target "PackageTemplate" (fun _ ->
     ZipHelper.Zip (__SOURCE_DIRECTORY__ + "/" + tempDir) (buildDir + "Template.zip") (!! (tempDir + "/**"))
 )
 
-Target "CopyBuildScripts" (fun _ ->
-    CopyDir buildDir buildScripts (fun _ -> true)
+Target "PackageBuildScripts" (fun _ ->
+    let directory = buildDir + "scripts/"
+    CopyDir scriptTemp buildScripts (fun _ -> true)
+    CopyFile directory (buildDir + "Template.zip")
+    ZipHelper.Zip (__SOURCE_DIRECTORY__ + "/" + scriptTemp) (directory + "Script.zip") (!!(scriptTemp + "/**"))
     
 )
+
+Target "BuildApp" (fun _ ->
+    CopyFile buildApp (buildDir + "Template.zip")
+    let buildAppSolution = buildApp + "Scaffolding.Build.sln"
+
+    RestoreMSSolutionPackages (fun p -> {
+                                            p with
+                                                OutputPath = (buildApp + "/packages")
+                                        }) buildAppSolution
+
+    !! (buildAppSolution)
+    |> MSBuildRelease "" "Rebuild"
+    |> ignore
+
+)
+
+Target "PackageApp" (fun _ ->
+    let bin = buildApp + "/bin/Release"
+    let outputPath = buildDir + "/app"
+    let version = release.AssemblyVersion
+
+    let dlls = Directory.GetFiles(bin, "*.dll") |> Array.toList
+    let filesToPack = bin + "/Scaffolding.Build.exe" :: dlls
+
+    let toPack = filesToPack |> separated " "
+
+    let result =
+        ExecProcess (fun info ->
+            info.FileName <- currentDirectory </> "packages" </> "build" </> "ILRepack" </> "tools" </> "ILRepack.exe"
+            info.Arguments <- sprintf "/verbose /lib:%s /ver:%s /out:%s /ndebug %s" bin version (outputPath </> "scaffolding.exe") toPack
+            ) (TimeSpan.FromMinutes 5.)
+
+    if result <> 0 then failwithf "Error during ILRepack execution."
+
+    ()
+
+)
+
 // ---------------------------
 // Preprocessing of names
 
@@ -163,15 +206,19 @@ Target "KeepRunning" (fun _ ->
 Target "Release" DoNothing
 Target "Default" DoNothing
 Target "WriteDocumentation" DoNothing
+Target "Start" DoNothing
 
-"Clean"
+"Start"
+  ==> "Clean"
   ==> "CleanSources"
   ==> "CopyTemplateToTemporaryDirectory"
   ==> "RenameDirectories"
   ==> "RenameFiles"
   ==> "ReplaceRootNamespace"
-  ==> "CopyBuildScripts"
   ==> "PackageTemplate"
+  ==> "PackageBuildScripts"
+  ==> "BuildApp"
+  ==> "PackageApp"
   ==> "Default"
 
 

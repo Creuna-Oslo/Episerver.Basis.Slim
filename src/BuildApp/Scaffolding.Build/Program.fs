@@ -18,5 +18,6 @@ let DetermineBaseDirectory argv =
 [<EntryPoint>]
 let main argv = 
     let scaffoldingDirectory = argv |> Array.toList |> DetermineBaseDirectory
+    printfn "Scaffolding to %s" scaffoldingDirectory
     StartBuild scaffoldingDirectory
     0

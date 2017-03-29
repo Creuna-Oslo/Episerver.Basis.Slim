@@ -1,3 +1,6 @@
+#### 1.2.0.0 - 29.03.2017
+* Added new scaffolding exe for easier creation
+
 #### 1.1.1 - 29.03.2017
 * Strongly typed content area options
 * RenderSection with default content

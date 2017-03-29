@@ -61,9 +61,7 @@
     <Compile Include="Program.fs" />
     <None Include="App.config" />
     <Content Include="packages.config" />
-    <EmbeddedResource Include="Resources.resx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Resources.resx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FakeLib">
