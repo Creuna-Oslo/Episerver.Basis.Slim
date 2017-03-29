@@ -29,12 +29,23 @@
         <div class="span9" id="main">
           
 <h2><a name="Creating-solution-from-the-template" class="anchor" href="#Creating-solution-from-the-template">Creating solution from the template</a></h2>
-<p>Download the <a href="http://github.com/Arthyon/Episerver.Basis.Slim/releases">latest release</a> and unzip the files in the directory you want to create the template.
-Run build.cmd and after the script downloads the necessary dependencies you will be prompted for the solution name.</p>
+<p>There are three possible ways to scaffold the template.</p>
 <p><strong>Note</strong>: Do not name part of your solution <strong>$solutionname$</strong> as it will mess with the namespace substitution regex.</p>
-<p>The script will create the solution and clean up after itself.</p>
+<h3><a name="1-The-easy-way" class="anchor" href="#1-The-easy-way">1. The easy way</a></h3>
+<p>Download the <a href="http://github.com/Arthyon/Episerver.Basis.Slim/releases">latest scaffolding.exe</a>.
+Run it from the directory you want to scaffold into, or pass the path to a directory as the first argument (It defaults to current working directory if first argument is missing or not a valid directory).</p>
+<p>You will be prompted for the solution name.</p>
+<h3><a name="2-If-you-want-to-inspect-sources" class="anchor" href="#2-If-you-want-to-inspect-sources">2. If you want to inspect sources</a></h3>
+<p>Download the <a href="http://github.com/Arthyon/Episerver.Basis.Slim/releases">latest Scripts.zip</a>.
+Unzip the files in the directory you want to create the template.
+build.fsx describes the steps the script will execute, so you can be check it out yourself.
+Run build.cmd and after the script downloads the necessary dependencies you will be prompted for the solution name.</p>
+<p>The script will create the solution and clean up after itself, deleting all files, including build.cmd.
+If you want to know how it works, <a href="how-it-works.html">this page</a> is for you.</p>
+<h3><a name="3-DIY" class="anchor" href="#3-DIY">3. DIY</a></h3>
+<p>Clone the repository and build the scripts and exe yourself :)</p>
+<h2><a name="Setting-up-the-environment" class="anchor" href="#Setting-up-the-environment">Setting up the environment</a></h2>
 <p>After setting up the solution, a couple of steps are needed to set up Episerver correctly.</p>
-<h3><a name="Setting-up-the-environment" class="anchor" href="#Setting-up-the-environment">Setting up the environment</a></h3>
 <ul>
 <li>Create a database and add the connection string to ConnectionStrings.Debug.config.</li>
 <li>Get a license and put it in root of the web project (or override the licenseFilePath in EpiserverFramework.Debug.config)</li>
@@ -44,26 +55,8 @@ Run build.cmd and after the script downloads the necessary dependencies you will
 <li>Create a frontpage below Root in Edit Mode</li>
 <li>Manage Sites -&gt; Add Site: Add new site with your host and choose newly created startpage as root</li>
 </ul>
-<h3><a name="Learn-More" class="anchor" href="#Learn-More">Learn More</a></h3>
+<h2><a name="Learn-More" class="anchor" href="#Learn-More">Learn More</a></h2>
 <p>To learn more about what is included, take a look at the feature list in the menu or get an overview of the structure <a href="structure.html">here</a>.</p>
-<h3><a name="How-it-works" class="anchor" href="#How-it-works">How it works</a></h3>
-<p>These are the files used to create the solution:</p>
-<ul>
-<li>build.cmd</li>
-<li>build.fsx</li>
-<li>Template.zip</li>
-<li>.paket/paket.bootstrapper.exe</li>
-<li>paket.dependencies</li>
-<li>paket.lock</li>
-</ul>
-<p>If you are familiar with the workflow when using FAKE and paket, this will be straightforward to understand.</p>
-<ol>
-<li>build.cmd downloads executes paket.bootstrapper which checks for the latest version of paket.exe and downloads it.</li>
-<li>Paket.exe inspects paket.lock for all dependencies, in this case only FAKE, and downloads them.</li>
-<li>FAKE is executed using build.fsx.</li>
-<li>Build.fsx unzips the template and substitutes all namespaces and filenames with the entered solution name.</li>
-<li>build.cmd deletes all files and folders used during the build.</li>
-</ol>
 
 
         </div>
