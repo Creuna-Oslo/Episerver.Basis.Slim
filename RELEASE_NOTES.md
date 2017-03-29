@@ -1,3 +1,7 @@
+#### 1.1.1 - 29.03.2017
+* Strongly typed content area options
+* RenderSection with default content
+
 #### 1.1.0 - 28.03.2017
 * Added custom login page
 
