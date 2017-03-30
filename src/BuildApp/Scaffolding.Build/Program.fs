@@ -3,15 +3,16 @@ open System
 open System.Security.Principal
 open Build
 
-
-
 let IsValidDirectory directoryPath =
     Directory.Exists directoryPath
 
+
 let DetermineBaseDirectory argv =
     match argv with
-    | head :: tail when IsValidDirectory head -> head
-    | _ -> Environment.CurrentDirectory
+    | head :: tail when (head = "--version") -> printf "Version: %s" AssemblyVersionInformation.AssemblyVersion
+                                                None
+    | head :: tail when IsValidDirectory head -> Some head
+    | _ -> Some Environment.CurrentDirectory
 
 let PrintVersionInformation () =
     printfn "%s" AssemblyVersionInformation.AssemblyTitle
@@ -21,9 +22,12 @@ let PrintVersionInformation () =
 
 [<EntryPoint>]
 let main argv = 
-    PrintVersionInformation ()
     
     let scaffoldingDirectory = argv |> Array.toList |> DetermineBaseDirectory
-    printfn "Scaffolding to %s" scaffoldingDirectory
-    StartBuild scaffoldingDirectory
+    match scaffoldingDirectory with
+    | Some dir ->
+        PrintVersionInformation ()
+        printfn "Scaffolding to %s" dir
+        StartBuild dir
+    | None -> ()
     0

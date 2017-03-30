@@ -33,10 +33,6 @@
     </ConfigName>
   </ItemGroup>
 
-<!--<Target Name="CopyFrontend" AfterTargets="PipelineCopyAllFilesToOneFolderForMsdeploy">
-    <Exec Command="echo \node_modules\ > exclude.txt" />
-    <Exec Command='xcopy /F /E /Y "$(MSBuildProjectDirectory)\Frontend" "$(MSBuildProjectDirectory)\$(_PackageTempDir)\Frontend\" /EXCLUDE:exclude.txt'/>  
-</Target>-->
   <Target Name="CopyOrTransformConfig" BeforeTargets="BeforeBuild;Build;Rebuild;Deploy">
     <Message
       Condition="!Exists('$(ConfigFolder)\%(ConfigName.Identity).$(Configuration).%(ConfigName.Ext)')"
