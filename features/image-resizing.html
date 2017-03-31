@@ -29,54 +29,60 @@
         <div class="span9" id="main">
           
 <h2><a name="Image-Resizing" class="anchor" href="#Image-Resizing">Image Resizing</a></h2>
-<p>The template has added the <a href="https://www.nuget.org/packages/RestImageResize.EPiServer/1.1.1/">RestImageResize-package</a> that can resize requested images on the fly.</p>
+<p>The template has added the <a href="https://imageresizing.net">Image Resizer-package</a> that can resize requested images on the fly. An <a href="https://github.com/valdisiljuconoks/ImageResizer.Plugins.EPiServerBlobReader">additional plugin</a> to handle episerver-files has also been added.</p>
 <h3><a name="Usage" class="anchor" href="#Usage">Usage</a></h3>
 <p>The image resizer intercepts requests to images and transforms if one of these parameters are set:</p>
 <ul>
 <li>width</li>
 <li>height</li>
-<li>transform</li>
+<li>mode</li>
 </ul>
 <p>Example of a request using image resizer:</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="html"><span class="k">&lt;</span><span class="i">img</span> <span class="o">src</span><span class="k">="~/Content/Images/bigcat.JPG?width=1200&amp;height=260&amp;transform=fill"</span> <span class="k">/&gt;</span>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="html"><span class="k">&lt;</span><span class="i">img</span> <span class="o">src</span><span class="k">="/globalassets/logo.png?width=1200&amp;height=260&amp;mode=crop"</span> <span class="k">/&gt;</span>
 </code></pre></td></tr></table>
-<p>If a new size is requested, the transformed image is placed in [appDataPath]/transformedImages/ by default. This can be changed in EpiserverFramework.config by adjusting the virtualPath of the ImagesTransformVPP virtual path provider.</p>
-<p>Helper methods to create a correct url from views are also included. These can be found in [Your solution name].Web.Business.Extensions.CmsExtensions (included by default in all views) and includes extension methods for UrlHelper.</p>
+<p>Helper methods to create a correct url from views are also included in the episerver plugin. The namespace for these is automatically used for all views.</p>
 <p>Usage:</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 <span class="l">2: </span>
 <span class="l">3: </span>
 <span class="l">4: </span>
 <span class="l">5: </span>
+<span class="l">6: </span>
+<span class="l">7: </span>
+<span class="l">8: </span>
 </pre></td>
 <td class="snippet"><pre class="fssnip highlighted"><code lang="csharp">@<span class="o">*</span> From url <span class="k">string</span> <span class="o">*</span>@
-@Url.Image(Model.ImagePath, width: <span class="n">1200</span>, height: <span class="n">260</span>)
+&lt;img src=<span class="s">"@Html.ResizeImage(Model.ImagePath, width: 1200, height: 260)"</span> <span class="o">/</span><span class="o">&gt;</span>
 
-@<span class="o">*</span> From ImageData objectO <span class="o">*</span>@
-@Url.Image(Model.Image, width: <span class="n">1200</span>, height: <span class="n">260</span>)
+@<span class="o">*</span> From ImageData <span class="k">object</span> <span class="o">*</span>@
+&lt;img src=<span class="s">"@Html.ResizeImage(Model.Image, width: 1200, height: 260)"</span> <span class="o">/</span><span class="o">&gt;</span>
+
+@<span class="o">*</span> Using Fluent syntax <span class="o">*</span>@
+&lt;img src=<span class="s">"@Html.ResizeImage(Model.Image).Width(1200)"</span> <span class="o">/</span><span class="o">&gt;</span>
 </code></pre></td></tr></table>
-<p>See extended documentation here: <a href="https://github.com/Romanets/RestImageResize"><a href="https://github.com/Romanets/RestImageResize">https://github.com/Romanets/RestImageResize</a></a>.</p>
+<p>See extended documentation here: <a href="https://github.com/valdisiljuconoks/ImageResizer.Plugins.EPiServerBlobReader"><a href="https://github.com/valdisiljuconoks/ImageResizer.Plugins.EPiServerBlobReader">https://github.com/valdisiljuconoks/ImageResizer.Plugins.EPiServerBlobReader</a></a>.</p>
+<h3><a name="Plugins" class="anchor" href="#Plugins">Plugins</a></h3>
+<p>There are a lot of plugins available for the image resizer.
+<strong>Note:</strong> Some require a license to use.</p>
+<p>A list of all plugins can be found <a href="https://imageresizing.net/plugins">here</a>.</p>
+<p>To install a new plugin, add its nuget-package and add a line for it in ImageResizerInitializer.cs</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="csharp"><span class="k">new</span> PluginName().Install(Config.Current);
+</code></pre></td></tr></table>
 <h3><a name="Relevant-Web-config-entries" class="anchor" href="#Relevant-Web-config-entries">Relevant Web.config entries</a></h3>
 <p>The resizer uses OpenWaves.ImageTransformations under the hood, which adds a couple of lines to the web.config to work.</p>
-<p>Under system.webServer, a new module called ImageTransformationsModule has been added:</p>
+<p>Under system.webServer, a new module called ImageResizingModule has been added:</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
-<span class="l">2: </span>
-<span class="l">3: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="xml"><span class="k">&lt;</span><span class="i">add</span> <span class="o">name</span><span class="k">="ImageTransformationsModule"</span> 
-    <span class="o">type</span><span class="k">="OpenWaves.ImageTransformations.Web.WebImageTransformationModule, OpenWaves.ImageTransformations.Web"</span> 
-    <span class="o">preCondition</span><span class="k">="managedHandler"</span> <span class="k">/&gt;</span>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="xml"><span class="k">&lt;</span><span class="i">add</span> <span class="o">name</span><span class="k">="ImageResizingModule"</span> <span class="o">type</span><span class="k">="ImageResizer.InterceptModule"</span> <span class="k">/&gt;</span>
 </code></pre></td></tr></table>
-<p>Under system.web/pages/controls a new assembly reference has been added</p>
+<p>Under system.web/httpModules a new module has been registered</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
-<span class="l">2: </span>
-<span class="l">3: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="xml"><span class="k">&lt;</span><span class="i">add</span> <span class="o">assembly</span><span class="k">="OpenWaves.ImageTransformations.Web"</span> 
-    <span class="o">namespace</span><span class="k">="OpenWaves.ImageTransformations.Web.Controls"</span> 
-    <span class="o">tagPrefix</span><span class="k">="ow"</span> <span class="k">/&gt;</span>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="xml"><span class="k">&lt;</span><span class="i">add</span> <span class="o">name</span><span class="k">="ImageResizingModule"</span> <span class="o">type</span><span class="k">="ImageResizer.InterceptModule"</span> <span class="k">/&gt;</span>
 </code></pre></td></tr></table>
 
 
