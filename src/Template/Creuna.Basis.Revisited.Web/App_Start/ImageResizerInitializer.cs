@@ -1,5 +1,7 @@
 ﻿using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
+using ImageResizer.Plugins.EPiServerBlobReader;
+using ImageResizer.Configuration;
 
 namespace Creuna.Basis.Revisited.Web.App_Start
 {
@@ -9,7 +11,7 @@ namespace Creuna.Basis.Revisited.Web.App_Start
     {
         public void Initialize(InitializationEngine context)
         {
-            
+            new EPiServerBlobReaderPlugin().Install(Config.Current);
         }
 
         public void Uninitialize(InitializationEngine context)

@@ -4,8 +4,6 @@ using EPiServer.DataAbstraction;
 using EPiServer.Globalization;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Mvc.Html;
-using System.Linq;
-using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 
@@ -64,42 +62,6 @@ namespace Creuna.Basis.Revisited.Web.Business.Views
         {
             var baseUrl = GetSiteBaseUrl();
             return $"{baseUrl}{relativeUrl}";
-        }
-
-        /// <summary>
-        /// Returns a resized version of the image from url string.
-        /// Resizing is done using the RestImageResize nuget package.
-        /// </summary>
-        public static string Image(this UrlHelper helper, string url, int width = 0, int height = 0, bool crop = true)
-            => ResizedImage(url, width, height, crop);
-
-        /// <summary>
-        /// Returns a resized version of the image content.
-        /// Resizing is done using the RestImageResize nuget package.
-        /// </summary>
-        public static string Image(this UrlHelper helper, ImageData image, int width = 0, int height = 0, bool crop = true)
-        {
-            var url = helper.ContentUrl(image.ContentLink);
-            return ResizedImage(url, width, height, crop);
-        }
-
-        static string ResizedImage(string url, int width, int height, bool crop)
-        {
-            if (string.IsNullOrEmpty(url))
-                return url;
-
-            if (Regex.IsMatch(url, @",,\d+\?"))
-                url = Regex.Replace(url, @",,\d+\?", match => "?");
-
-            url += $"{(url.Contains('?') ? '&' : '?')}transform={(crop ? "downfill" : "downfit")}";
-
-            if (width > 0)
-                url += "&width=" + width;
-
-            if (height > 0)
-                url += "&height=" + height;
-
-            return url;
         }
 
         static string GetSiteBaseUrl()
