@@ -35,10 +35,10 @@ See extended documentation here: [https://github.com/valdisiljuconoks/ImageResiz
 
 ### Plugins
 There are a lot of plugins available for the image resizer.
+
 **Note:** Some require a license to use.
 
 A list of all plugins can be found [here](https://imageresizing.net/plugins).
-
 To install a new plugin, add its nuget-package and add a line for it in ImageResizerInitializer.cs
 
 ```csharp
@@ -47,7 +47,7 @@ new PluginName().Install(Config.Current);
 
 
 ### Relevant Web.config entries
-The resizer uses OpenWaves.ImageTransformations under the hood, which adds a couple of lines to the web.config to work.
+The resizer must add a couple of lines to the web.config to work.
 
 Under system.webServer, a new module called ImageResizingModule has been added:
 
