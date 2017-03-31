@@ -64,16 +64,16 @@
 </code></pre></td></tr></table>
 <p>See extended documentation here: <a href="https://github.com/valdisiljuconoks/ImageResizer.Plugins.EPiServerBlobReader"><a href="https://github.com/valdisiljuconoks/ImageResizer.Plugins.EPiServerBlobReader">https://github.com/valdisiljuconoks/ImageResizer.Plugins.EPiServerBlobReader</a></a>.</p>
 <h3><a name="Plugins" class="anchor" href="#Plugins">Plugins</a></h3>
-<p>There are a lot of plugins available for the image resizer.
-<strong>Note:</strong> Some require a license to use.</p>
-<p>A list of all plugins can be found <a href="https://imageresizing.net/plugins">here</a>.</p>
-<p>To install a new plugin, add its nuget-package and add a line for it in ImageResizerInitializer.cs</p>
+<p>There are a lot of plugins available for the image resizer.</p>
+<p><strong>Note:</strong> Some require a license to use.</p>
+<p>A list of all plugins can be found <a href="https://imageresizing.net/plugins">here</a>.
+To install a new plugin, add its nuget-package and add a line for it in ImageResizerInitializer.cs</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 </pre></td>
 <td class="snippet"><pre class="fssnip highlighted"><code lang="csharp"><span class="k">new</span> PluginName().Install(Config.Current);
 </code></pre></td></tr></table>
 <h3><a name="Relevant-Web-config-entries" class="anchor" href="#Relevant-Web-config-entries">Relevant Web.config entries</a></h3>
-<p>The resizer uses OpenWaves.ImageTransformations under the hood, which adds a couple of lines to the web.config to work.</p>
+<p>The resizer must add a couple of lines to the web.config to work.</p>
 <p>Under system.webServer, a new module called ImageResizingModule has been added:</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 </pre></td>
