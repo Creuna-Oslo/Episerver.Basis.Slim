@@ -194,27 +194,6 @@
       <HintPath>..\packages\NuGet.Core.2.5.0\lib\net40-Client\NuGet.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="OpenWaves, Version=1.0.88.340, Culture=neutral, PublicKeyToken=7d0a8c4a744cf5c7, processorArchitecture=MSIL">
-      <HintPath>..\packages\OpenWaves.1.0.88.340\lib\net40\OpenWaves.dll</HintPath>
-    </Reference>
-    <Reference Include="OpenWaves.ImageTransformations, Version=1.0.85.251, Culture=neutral, PublicKeyToken=7d0a8c4a744cf5c7, processorArchitecture=MSIL">
-      <HintPath>..\packages\OpenWaves.ImageTransformations.1.0.85.251\lib\net40\OpenWaves.ImageTransformations.dll</HintPath>
-    </Reference>
-    <Reference Include="OpenWaves.ImageTransformations.EPiServer, Version=1.0.85.251, Culture=neutral, PublicKeyToken=7d0a8c4a744cf5c7, processorArchitecture=MSIL">
-      <HintPath>..\packages\OpenWaves.ImageTransformations.EPiServer.1.0.85.251\lib\net40\OpenWaves.ImageTransformations.EPiServer.dll</HintPath>
-    </Reference>
-    <Reference Include="OpenWaves.ImageTransformations.Web, Version=1.0.85.251, Culture=neutral, PublicKeyToken=7d0a8c4a744cf5c7, processorArchitecture=MSIL">
-      <HintPath>..\packages\OpenWaves.ImageTransformations.Web.1.0.85.251\lib\net40\OpenWaves.ImageTransformations.Web.dll</HintPath>
-    </Reference>
-    <Reference Include="OpenWaves.Web, Version=1.0.85.245, Culture=neutral, PublicKeyToken=7d0a8c4a744cf5c7, processorArchitecture=MSIL">
-      <HintPath>..\packages\OpenWaves.Web.1.0.85.245\lib\net40\OpenWaves.Web.dll</HintPath>
-    </Reference>
-    <Reference Include="RestImageResize, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RestImageResize.1.1.2\lib\net40\RestImageResize.dll</HintPath>
-    </Reference>
-    <Reference Include="RestImageResize.EPiServer, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RestImageResize.EPiServer.1.1.1\lib\net40\RestImageResize.EPiServer.dll</HintPath>
-    </Reference>
     <Reference Include="StructureMap, Version=3.1.9.463, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
       <HintPath>..\packages\structuremap-signed.3.1.9.463\lib\net40\StructureMap.dll</HintPath>
       <Private>True</Private>
@@ -384,7 +363,6 @@
     <Compile Include="App_Start\MvcRoutesInitializer.cs" />
     <Compile Include="App_Start\Structuremap\StructureMapDependencyResolver.cs" />
     <Compile Include="App_Start\Structuremap\StructureMapDependencyScope.cs" />
-    <Compile Include="App_Start\ImageResizeInitializer.cs" />
     <Compile Include="App_Start\WebApiInitializer.cs" />
     <Compile Include="App_Start\StructureMapInitializer.cs" />
     <Compile Include="App_Start\WebRegistry.cs" />
