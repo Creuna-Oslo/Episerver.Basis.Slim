@@ -26,10 +26,10 @@ Clone the repository and build the scripts and exe yourself :)
 
 After setting up the solution, a couple of steps are needed to set up Episerver correctly.
 
-- Create a database and add the connection string to ConnectionStrings.Debug.config.
+- Create a database and add the connection string to ConnectionStrings.config, or create a ConnectionString.Debug.config and add it as a transformation.
 - Get a license and put it in root of the web project (or override the licenseFilePath in EpiserverFramework.Debug.config)
-- Create a site in IIS
-- Navigate to said site and login to /Episerver/CMS/Admin as you co-user.
+- Create a site in IIS and make the application pool user db_owner of the database created earlier
+- Navigate to the site and log in to /Episerver/CMS/Admin as your co-user.
 - Config -> Language settings: Add your languages and move the main language to the top (typically norwegian)
 - Create a frontpage below Root in Edit Mode
 - Manage Sites -> Add Site: Add new site with your host and choose newly created startpage as root

@@ -1,3 +1,6 @@
+#### 1.2.1.0 - 31.03.2017
+* Replaced image resizer with a less bloated plugin
+
 #### 1.2.0.0 - 29.03.2017
 * Added new scaffolding exe for easier creation
 

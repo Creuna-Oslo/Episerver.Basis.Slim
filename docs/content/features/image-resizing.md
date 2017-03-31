@@ -1,6 +1,6 @@
 ## Image Resizing
 
-The template has added the [RestImageResize-package](https://www.nuget.org/packages/RestImageResize.EPiServer/1.1.1/) that can resize requested images on the fly.
+The template has added the [Image Resizer-package](https://imageresizing.net) that can resize requested images on the fly. An [additional plugin](https://github.com/valdisiljuconoks/ImageResizer.Plugins.EPiServerBlobReader) to handle episerver-files has also been added.
 
 ### Usage
 
@@ -8,49 +8,56 @@ The image resizer intercepts requests to images and transforms if one of these p
 
 - width
 - height
-- transform
+- mode
 
 Example of a request using image resizer:
 
 ```html
-<img src="~/Content/Images/bigcat.JPG?width=1200&height=260&transform=fill" />
+<img src="/globalassets/logo.png?width=1200&height=260&mode=crop" />
 ```
 
-If a new size is requested, the transformed image is placed in [appDataPath]/transformedImages/ by default. This can be changed in EpiserverFramework.config by adjusting the virtualPath of the ImagesTransformVPP virtual path provider.
-
-Helper methods to create a correct url from views are also included. These can be found in [Your solution name].Web.Business.Extensions.CmsExtensions (included by default in all views) and includes extension methods for UrlHelper.
+Helper methods to create a correct url from views are also included in the episerver plugin. The namespace for these is automatically used for all views.
 
 Usage:
 
 ```csharp
 @* From url string *@
-@Url.Image(Model.ImagePath, width: 1200, height: 260)
+<img src="@Html.ResizeImage(Model.ImagePath, width: 1200, height: 260)" />
 
-@* From ImageData objectO *@
-@Url.Image(Model.Image, width: 1200, height: 260)
+@* From ImageData object *@
+<img src="@Html.ResizeImage(Model.Image, width: 1200, height: 260)" />
+
+@* Using Fluent syntax *@
+<img src="@Html.ResizeImage(Model.Image).Width(1200)" />
 ```
 
+See extended documentation here: [https://github.com/valdisiljuconoks/ImageResizer.Plugins.EPiServerBlobReader](https://github.com/valdisiljuconoks/ImageResizer.Plugins.EPiServerBlobReader).
 
+### Plugins
+There are a lot of plugins available for the image resizer.
+**Note:** Some require a license to use.
 
-See extended documentation here: [https://github.com/Romanets/RestImageResize](https://github.com/Romanets/RestImageResize).
+A list of all plugins can be found [here](https://imageresizing.net/plugins).
+
+To install a new plugin, add its nuget-package and add a line for it in ImageResizerInitializer.cs
+
+```csharp
+new PluginName().Install(Config.Current);
+```
+
 
 ### Relevant Web.config entries
 The resizer uses OpenWaves.ImageTransformations under the hood, which adds a couple of lines to the web.config to work.
 
-Under system.webServer, a new module called ImageTransformationsModule has been added:
+Under system.webServer, a new module called ImageResizingModule has been added:
 
 ```xml
-<add name="ImageTransformationsModule" 
-    type="OpenWaves.ImageTransformations.Web.WebImageTransformationModule, OpenWaves.ImageTransformations.Web" 
-    preCondition="managedHandler" />
+<add name="ImageResizingModule" type="ImageResizer.InterceptModule" />
 ```
 
-Under system.web/pages/controls a new assembly reference has been added
+Under system.web/httpModules a new module has been registered
 
 ```xml
-<add assembly="OpenWaves.ImageTransformations.Web" 
-    namespace="OpenWaves.ImageTransformations.Web.Controls" 
-    tagPrefix="ow" />
+<add name="ImageResizingModule" type="ImageResizer.InterceptModule" />
 ```
-
 
