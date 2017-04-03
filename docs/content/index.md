@@ -1,7 +1,5 @@
 # A slim Episerver Project Template
 
-
-
 ## How to use the template
 [Main article](usage.html)
 
@@ -12,11 +10,12 @@ On windows:
   * The project will be placed in folder named after the name you chose
 
 
-
 Contributing and copyright
 --------------------------
 
 The project is hosted on [GitHub][gh] where you can [report issues][issues], fork the project and submit pull requests.
+
+For a writeup of how to contribute, see the [Contributing](contribute.html)-page.
 
 For license information see the [License file][license].
 

@@ -22,6 +22,8 @@ If you want to know how it works, [this page](how-it-works.html) is for you.
 ### 3. DIY
 Clone the repository and build the scripts and exe yourself :)
 
+Please see the [Contribute](contribute.html)-page for details about the build process and moving parts.
+
 ## Setting up the environment
 
 After setting up the solution, a couple of steps are needed to set up Episerver correctly.
