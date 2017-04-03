@@ -5,7 +5,7 @@
 
 On windows:
 
-  * Download the [latest scaffolding.exe](http://github.com/Arthyon/Episerver.Basis.Slim/releases).
+  * Download the [latest scaffolding.exe](http://github.com/Creuna-Oslo/Episerver.Basis.Slim/releases).
   * Run the exe and choose a name for your solution
   * The project will be placed in folder named after the name you chose
 
@@ -19,6 +19,6 @@ For a writeup of how to contribute, see the [Contributing](contribute.html)-page
 
 For license information see the [License file][license].
 
-  [gh]: https://github.com/Arthyon/Episerver.Basis.Slim
-  [issues]: https://github.com/Arthyon/Episerver.Basis.Slim/issues
-  [license]: http://github.com/Arthyon/Episerver.Basis.Slim/blob/master/LICENSE.txt
+  [gh]: https://github.com/Creuna-Oslo/Episerver.Basis.Slim
+  [issues]: https://github.com/Creuna-Oslo/Episerver.Basis.Slim/issues
+  [license]: http://github.com/Creuna-Oslo/Episerver.Basis.Slim/blob/master/LICENSE.txt

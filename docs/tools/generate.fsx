@@ -8,7 +8,7 @@ let referenceBinaries = [ "FSharpVSPowerTools.Core.dll" ]
 // Web site location for the generated documentation
 let website = "/Episerver.Basis.Slim"
 
-let githubLink = "http://github.com/Arthyon/Episerver.Basis.Slim"
+let githubLink = "http://github.com/Creuna-Oslo/Episerver.Basis.Slim"
 
 // Specify more information about your project
 let info =

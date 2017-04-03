@@ -5,13 +5,13 @@ There are three possible ways to scaffold the template.
 **Note**: Do not name part of your solution **\$solutionname\$** as it will mess with the namespace substitution regex.
 
 ### 1. The easy way
-Download the [latest scaffolding.exe](http://github.com/Arthyon/Episerver.Basis.Slim/releases).
+Download the [latest scaffolding.exe](http://github.com/Creuna-Oslo/Episerver.Basis.Slim/releases).
 Run it from the directory you want to scaffold into, or pass the path to a directory as the first argument (It defaults to current working directory if first argument is missing or not a valid directory).
 
 You will be prompted for the solution name.
 
 ### 2. If you want to inspect sources
-Download the [latest Scripts.zip](http://github.com/Arthyon/Episerver.Basis.Slim/releases).
+Download the [latest Scripts.zip](http://github.com/Creuna-Oslo/Episerver.Basis.Slim/releases).
 Unzip the files in the directory you want to create the template.
 build.fsx describes the steps the script will execute, so you can be check it out yourself.
 Run build.cmd and after the script downloads the necessary dependencies you will be prompted for the solution name.

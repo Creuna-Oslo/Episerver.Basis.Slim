@@ -22,12 +22,12 @@ let tokenNamespace = "$solutionname$" // This is also added as default root name
 
 // Git configuration (used for publishing documentation in gh-pages branch)
 // The profile where the project is posted 
-let gitOwner = "Arthyon"
+let gitOwner = "Creuna-Oslo"
 let gitHome = "https://github.com/" + gitOwner
 
 // The name of the project on GitHub
 let gitName = "Episerver.Basis.Slim"
-let cloneUrl = "https://github.com/Arthyon/Episerver.Basis.Slim.git"
+let cloneUrl = "https://github.com/Creuna-Oslo/Episerver.Basis.Slim.git"
 
 // Read additional information from the release notes document
 Environment.CurrentDirectory <- __SOURCE_DIRECTORY__

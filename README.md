@@ -1,3 +1,3 @@
 # Documentation
 
-Please visit [The GH Pages for documentation](https://arthyon.github.io/Episerver.Basis.Slim)
+Please visit [The GH Pages for documentation](https://creuna-oslo.github.io/Episerver.Basis.Slim)
