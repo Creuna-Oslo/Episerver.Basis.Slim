@@ -230,8 +230,8 @@ Target "ReleaseTemplate" (fun _ ->
     printfn "Newest release %s" draft.DraftRelease.TagName
     if draft.DraftRelease.TagName = release.NugetVersion then
         printfn "No new release queued. Exiting. Did you update Release notes?"
-    //else
-    //    ReleaseTemplate client
+    else
+        ReleaseTemplate client
     
 )
 
