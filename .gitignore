@@ -9,3 +9,6 @@ docs/output/**/*
 src/BuildScripts/.paket/paket.exe
 src/BuildScripts/packages/**/*
 src/BuildScripts/.fake/**/*
+paket-files
+release.cmd
+**/*.swp

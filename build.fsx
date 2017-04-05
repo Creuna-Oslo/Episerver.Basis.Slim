@@ -11,6 +11,7 @@ open Fake.ConfigurationHelper
 open System
 open System.IO
 open System.Text.RegularExpressions
+open Fake
 
 // The name of the project 
 // (used by attributes in AssemblyInfo, name of a NuGet package and directory in 'src')
@@ -201,6 +202,39 @@ Target "ReleaseDocs" (fun _ ->
     Branches.push tempDocsDir
 )
 
+#load @"paket-files/build/fsharp/FAKE/modules/Octokit/Octokit.fsx"
+open Octokit
+
+let ReleaseTemplate client =
+    StageAll ""
+    Git.Commit.Commit "" (sprintf "Released version %s" release.NugetVersion)
+    Branches.pushBranch "" "origin" (Information.getBranchName "")
+
+    Branches.tag "" release.NugetVersion
+    Branches.pushTag "" "origin" release.NugetVersion
+
+    client
+    |> createDraft gitOwner gitName release.NugetVersion (release.SemVer.PreRelease <> None) release.Notes
+    |> uploadFile "./build/scaffolding.exe"
+    |> uploadFile "./build/Scripts.zip"
+    |> releaseDraft
+    |> Async.RunSynchronously
+
+Target "ReleaseTemplate" (fun _ ->
+    let user = getBuildParam "github-user"
+    let pwd = getBuildParam "github-pw"
+
+    let client = createClient (getBuildParamOrDefault "github-user" "") (getBuildParamOrDefault "github-pw" "")
+    let draft = Octokit.getLastRelease gitOwner gitName client |> Async.RunSynchronously
+    
+    printfn "Newest release %s" draft.DraftRelease.TagName
+    if draft.DraftRelease.TagName = release.NugetVersion then
+        printfn "No new release queued. Exiting. Did you update Release notes?"
+    //else
+    //    ReleaseTemplate client
+    
+)
+
 Target "KeepRunning" (fun _ ->
     use watcher = !! "docs/content/**/*.*" |> WatchChanges (fun changes ->
         GenerateDocumentation false
@@ -236,6 +270,8 @@ Target "Start" DoNothing
   ==> "Cleanup"
   ==> "Default"
 
+"Default"
+  ==> "ReleaseTemplate"
 
 "CleanDocs"
   ==> "GenerateDocs" 

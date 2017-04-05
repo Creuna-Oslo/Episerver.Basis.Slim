@@ -320,7 +320,9 @@
     <None Include="Configurations\Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Creuna.Basis.Revisited.Web.wpp.targets" />
     <Content Include="ConnectionStrings.config" />
     <Content Include="Episerver.config" />

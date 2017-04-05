@@ -1,3 +1,6 @@
+#### 1.2.1.1 - 05.04.2017
+* Updated nuget packages
+
 #### 1.2.1.0 - 31.03.2017
 * Replaced image resizer with a less bloated plugin
 
