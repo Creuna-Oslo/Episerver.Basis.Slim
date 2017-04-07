@@ -58,6 +58,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="EPi.Libraries.BlockSearch, Version=4.0.0.0, Culture=neutral, PublicKeyToken=c5738ce365fc6356, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPi.Libraries.BlockSearch.4.0.0\lib\net45\EPi.Libraries.BlockSearch.dll</HintPath>
+    </Reference>
     <Reference Include="EPiServer, Version=10.6.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\packages\EPiServer.CMS.Core.10.6.0\lib\net45\EPiServer.dll</HintPath>
     </Reference>
@@ -320,6 +323,7 @@
     <None Include="Configurations\Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="readme.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

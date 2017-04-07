@@ -1,4 +1,4 @@
-## Creating solution from the template
+## Creating a solution from the template
 
 There are three possible ways to scaffold the template.
 
@@ -35,6 +35,8 @@ After setting up the solution, a couple of steps are needed to set up Episerver 
 - Config -> Language settings: Add your languages and move the main language to the top (typically norwegian)
 - Create a frontpage below Root in Edit Mode
 - Manage Sites -> Add Site: Add new site with your host and choose newly created startpage as root
+
+**NOTE**: If you are using Episerver Find, follow the instructions for how to remove Episerver Search [here](features/search.html)
 
 ## Learn More
 To learn more about what is included, take a look at the feature list in the menu or get an overview of the structure [here](structure.html).

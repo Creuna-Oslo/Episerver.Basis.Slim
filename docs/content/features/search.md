@@ -2,6 +2,8 @@
 
 Episerver Search is bundled as a default search solution. Many projects are using Find, so how to remove Episerver Search is also documented here.
 
+A [nuget package](https://github.com/jstemerdink/EPi.Libraries.BlockSearch) is included to make blocks searchable as well. If you want to exclude a property on a block from being indexed, add the attribute [Searchable(false)] to it.
+
 ### Enabling search
 Episerver Search is disabled by default, as a manual configuration change is needed without crashing the initialization.
 
@@ -48,4 +50,8 @@ In the folder Configurations, remove EpiserverSearch.config, EpiserverSearchInde
 In Web.config, remove the two sections: episerver.search and episerver.search.indexingservice, as well as the IndexingServiceCustomBinding and and the Location element regarding the path IndexingServicee/IndexingService.svc.
 In Web.Release.config remove the location-transform element.
 
-Uninstall the nuget package EPiServer.Search and remove the IndexingService-folder if the uninstallation process did not remove it.
+Remove the nuget package EPi.Libraries.BlockSearch and the SearchText-property in ContentPageBase.
+
+
+Remove the nuget package EPiServer.Search and remove the IndexingService-folder if the uninstallation process did not remove it.
+

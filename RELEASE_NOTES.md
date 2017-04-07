@@ -1,3 +1,6 @@
+#### 1.2.1.2 - 07.05.2017
+* Blocks are now indexed in episerver search
+
 #### 1.2.1.1 - 05.04.2017
 * Updated nuget packages
 
