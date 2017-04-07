@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>usage</title>
+    <title>Reporting Bugs and Suggestions
+</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A quickstart template for new Episerver projects">
     <meta name="author" content="Christian Hochlin">
@@ -28,38 +29,15 @@
       <div class="row">
         <div class="span9" id="main">
           
-<h2><a name="Creating-a-solution-from-the-template" class="anchor" href="#Creating-a-solution-from-the-template">Creating a solution from the template</a></h2>
-<p>There are three possible ways to scaffold the template.</p>
-<p><strong>Note</strong>: Do not name part of your solution <strong>$solutionname$</strong> as it will mess with the namespace substitution regex.</p>
-<h3><a name="1-The-easy-way" class="anchor" href="#1-The-easy-way">1. The easy way</a></h3>
-<p>Download the <a href="http://github.com/Creuna-Oslo/Episerver.Basis.Slim/releases">latest scaffolding.exe</a>.
-Run it from the directory you want to scaffold into, or pass the path to a directory as the first argument (It defaults to current working directory if first argument is missing or not a valid directory).</p>
-<p>You will be prompted for the solution name.</p>
-<h3><a name="2-If-you-want-to-inspect-sources" class="anchor" href="#2-If-you-want-to-inspect-sources">2. If you want to inspect sources</a></h3>
-<p><strong>NOTE</strong>: This will be deprecated in the next release. The scaffolding tool will be the main way to distribute the template, mostly to avoid maintaining two code bases. The project is open source anyway, so the paranoid people can compile their own tool.</p>
-<p>Download the <a href="http://github.com/Creuna-Oslo/Episerver.Basis.Slim/releases">latest Scripts.zip</a>.
-Unzip the files in the directory you want to create the template.
-build.fsx describes the steps the script will execute, so you can be check it out yourself.
-Run build.cmd and after the script downloads the necessary dependencies you will be prompted for the solution name.</p>
-<p>The script will create the solution and clean up after itself, deleting all files, including build.cmd.
-If you want to know how it works, <a href="how-it-works.html">this page</a> is for you.</p>
-<h3><a name="3-DIY" class="anchor" href="#3-DIY">3. DIY</a></h3>
-<p>Clone the repository and build the scripts and exe yourself :)</p>
-<p>Please see the <a href="contribute.html">Contribute</a>-page for details about the build process and moving parts.</p>
-<h2><a name="Setting-up-the-environment" class="anchor" href="#Setting-up-the-environment">Setting up the environment</a></h2>
-<p>After setting up the solution, a couple of steps are needed to set up Episerver correctly.</p>
+<h1><a name="Reporting-Bugs-and-Suggestions" class="anchor" href="#Reporting-Bugs-and-Suggestions">Reporting Bugs and Suggestions</a></h1>
+<p>Use Github issues to report bugs and suggestions.</p>
+<p>Remember to mark the issue with the correct label:</p>
+<p>Type of issue should be labeled with either bug, question or suggestion.</p>
+<p>Which part of the project the issue pertains to should be labeled using either:</p>
 <ul>
-<li>Create a database and add the connection string to ConnectionStrings.config, or create a ConnectionString.Debug.config and add it as a transformation.</li>
-<li>Get a license and put it in root of the web project (or override the licenseFilePath in EpiserverFramework.Debug.config)</li>
-<li>Create a site in IIS and make the application pool user db_owner of the database created earlier</li>
-<li>Navigate to the site and log in to /Episerver/CMS/Admin as your co-user.</li>
-<li>Config -&gt; Language settings: Add your languages and move the main language to the top (typically norwegian)</li>
-<li>Create a frontpage below Root in Edit Mode</li>
-<li>Manage Sites -&gt; Add Site: Add new site with your host and choose newly created startpage as root</li>
+<li>template - for issues regarding the template when scaffolding is completed</li>
+<li>generation - for issues regarding the build process, improvements to the scaffolding tool etc.</li>
 </ul>
-<p><strong>NOTE</strong>: If you are using Episerver Find, follow the instructions for how to remove Episerver Search <a href="features/search.html">here</a></p>
-<h2><a name="Learn-More" class="anchor" href="#Learn-More">Learn More</a></h2>
-<p>To learn more about what is included, take a look at the feature list in the menu or get an overview of the structure <a href="structure.html">here</a>.</p>
 
 
         </div>

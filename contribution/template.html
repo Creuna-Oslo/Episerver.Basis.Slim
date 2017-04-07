@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>usage</title>
+    <title>Enhancing the Template
+</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A quickstart template for new Episerver projects">
     <meta name="author" content="Christian Hochlin">
@@ -28,38 +29,27 @@
       <div class="row">
         <div class="span9" id="main">
           
-<h2><a name="Creating-a-solution-from-the-template" class="anchor" href="#Creating-a-solution-from-the-template">Creating a solution from the template</a></h2>
-<p>There are three possible ways to scaffold the template.</p>
-<p><strong>Note</strong>: Do not name part of your solution <strong>$solutionname$</strong> as it will mess with the namespace substitution regex.</p>
-<h3><a name="1-The-easy-way" class="anchor" href="#1-The-easy-way">1. The easy way</a></h3>
-<p>Download the <a href="http://github.com/Creuna-Oslo/Episerver.Basis.Slim/releases">latest scaffolding.exe</a>.
-Run it from the directory you want to scaffold into, or pass the path to a directory as the first argument (It defaults to current working directory if first argument is missing or not a valid directory).</p>
-<p>You will be prompted for the solution name.</p>
-<h3><a name="2-If-you-want-to-inspect-sources" class="anchor" href="#2-If-you-want-to-inspect-sources">2. If you want to inspect sources</a></h3>
-<p><strong>NOTE</strong>: This will be deprecated in the next release. The scaffolding tool will be the main way to distribute the template, mostly to avoid maintaining two code bases. The project is open source anyway, so the paranoid people can compile their own tool.</p>
-<p>Download the <a href="http://github.com/Creuna-Oslo/Episerver.Basis.Slim/releases">latest Scripts.zip</a>.
-Unzip the files in the directory you want to create the template.
-build.fsx describes the steps the script will execute, so you can be check it out yourself.
-Run build.cmd and after the script downloads the necessary dependencies you will be prompted for the solution name.</p>
-<p>The script will create the solution and clean up after itself, deleting all files, including build.cmd.
-If you want to know how it works, <a href="how-it-works.html">this page</a> is for you.</p>
-<h3><a name="3-DIY" class="anchor" href="#3-DIY">3. DIY</a></h3>
-<p>Clone the repository and build the scripts and exe yourself :)</p>
-<p>Please see the <a href="contribute.html">Contribute</a>-page for details about the build process and moving parts.</p>
-<h2><a name="Setting-up-the-environment" class="anchor" href="#Setting-up-the-environment">Setting up the environment</a></h2>
-<p>After setting up the solution, a couple of steps are needed to set up Episerver correctly.</p>
+<h1><a name="Enhancing-the-Template" class="anchor" href="#Enhancing-the-Template">Enhancing the Template</a></h1>
+<p>The template can be opened as a regular solution using the solution file <strong>src/Template/Creuna.Basis.Revisited.sln</strong>
+Add a ConnectionStrings.Debug.config to the Creuna.Basis.Revisited.Web/Configurations-folder and build.</p>
+<p>You should then be ready to set up Episerver.</p>
+<h2><a name="What-to-enhance" class="anchor" href="#What-to-enhance">What to enhance</a></h2>
+<p>The Basis template should only contain the bare necessities for a new episerver project. If your proposed enhancement is something only <em>some</em> projects will be using, consider contributing to <a href="https://creuna.visualstudio.com/Creuna.Cookbook">Creuna.Cookbook</a> instead.</p>
+<p>Other things to contribute beside new features are better ways to solve existing features, e.g. if Episerver releases a new and better way to do something, or a new feature in Episerver makes a nuget package obsolete.</p>
+<h2><a name="Code-style-guidelines" class="anchor" href="#Code-style-guidelines">Code style guidelines</a></h2>
 <ul>
-<li>Create a database and add the connection string to ConnectionStrings.config, or create a ConnectionString.Debug.config and add it as a transformation.</li>
-<li>Get a license and put it in root of the web project (or override the licenseFilePath in EpiserverFramework.Debug.config)</li>
-<li>Create a site in IIS and make the application pool user db_owner of the database created earlier</li>
-<li>Navigate to the site and log in to /Episerver/CMS/Admin as your co-user.</li>
-<li>Config -&gt; Language settings: Add your languages and move the main language to the top (typically norwegian)</li>
-<li>Create a frontpage below Root in Edit Mode</li>
-<li>Manage Sites -&gt; Add Site: Add new site with your host and choose newly created startpage as root</li>
+<li>Keep the code readable and terse. The user should be able to understand what the code does reasonably fast and without going through a lot of abstraction layers.</li>
+<li>Keep to the existing conventions so the project has a consistent style, e.g. put initializations in App_Start/[YourNewFeature]Initializer.cs</li>
 </ul>
-<p><strong>NOTE</strong>: If you are using Episerver Find, follow the instructions for how to remove Episerver Search <a href="features/search.html">here</a></p>
-<h2><a name="Learn-More" class="anchor" href="#Learn-More">Learn More</a></h2>
-<p>To learn more about what is included, take a look at the feature list in the menu or get an overview of the structure <a href="structure.html">here</a>.</p>
+<h2><a name="Documentation" class="anchor" href="#Documentation">Documentation</a></h2>
+<p>Remember to <a href="documentation.md">document the new features</a>. Without documenting the feature it is much harder to use and understand for the user, and the risk of reimplementing existing functionality increases.</p>
+<p>Pull requests without proper documentation <strong>will not</strong> be accepted into master.</p>
+<h2><a name="Testing-the-new-template" class="anchor" href="#Testing-the-new-template">Testing the new template</a></h2>
+<p>Usually, testing the scaffolding should not be necessary when only modifying the template, but could be useful to verify all namespaces are correctly replaced or any other edge cases you may encounter.</p>
+<p>To generate a new build app with your template, run build.cmd without parameters from the root of the repository.
+The template will be packaged, bundled with the scaffolding tool and put in the build-folder.</p>
+<p>From there, run scaffolding.exe as normal and verify the output solution.</p>
+<p><strong>NOTE:</strong> All files not in source control will be removed when packaging the template (all files removed by <em>git clean -fxd ./src</em>), so remember to keep a copy of your Debug.config-files outside of the repository.</p>
 
 
         </div>

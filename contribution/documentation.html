@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>usage</title>
+    <title>Writing Documentation
+</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A quickstart template for new Episerver projects">
     <meta name="author" content="Christian Hochlin">
@@ -28,38 +29,41 @@
       <div class="row">
         <div class="span9" id="main">
           
-<h2><a name="Creating-a-solution-from-the-template" class="anchor" href="#Creating-a-solution-from-the-template">Creating a solution from the template</a></h2>
-<p>There are three possible ways to scaffold the template.</p>
-<p><strong>Note</strong>: Do not name part of your solution <strong>$solutionname$</strong> as it will mess with the namespace substitution regex.</p>
-<h3><a name="1-The-easy-way" class="anchor" href="#1-The-easy-way">1. The easy way</a></h3>
-<p>Download the <a href="http://github.com/Creuna-Oslo/Episerver.Basis.Slim/releases">latest scaffolding.exe</a>.
-Run it from the directory you want to scaffold into, or pass the path to a directory as the first argument (It defaults to current working directory if first argument is missing or not a valid directory).</p>
-<p>You will be prompted for the solution name.</p>
-<h3><a name="2-If-you-want-to-inspect-sources" class="anchor" href="#2-If-you-want-to-inspect-sources">2. If you want to inspect sources</a></h3>
-<p><strong>NOTE</strong>: This will be deprecated in the next release. The scaffolding tool will be the main way to distribute the template, mostly to avoid maintaining two code bases. The project is open source anyway, so the paranoid people can compile their own tool.</p>
-<p>Download the <a href="http://github.com/Creuna-Oslo/Episerver.Basis.Slim/releases">latest Scripts.zip</a>.
-Unzip the files in the directory you want to create the template.
-build.fsx describes the steps the script will execute, so you can be check it out yourself.
-Run build.cmd and after the script downloads the necessary dependencies you will be prompted for the solution name.</p>
-<p>The script will create the solution and clean up after itself, deleting all files, including build.cmd.
-If you want to know how it works, <a href="how-it-works.html">this page</a> is for you.</p>
-<h3><a name="3-DIY" class="anchor" href="#3-DIY">3. DIY</a></h3>
-<p>Clone the repository and build the scripts and exe yourself :)</p>
-<p>Please see the <a href="contribute.html">Contribute</a>-page for details about the build process and moving parts.</p>
-<h2><a name="Setting-up-the-environment" class="anchor" href="#Setting-up-the-environment">Setting up the environment</a></h2>
-<p>After setting up the solution, a couple of steps are needed to set up Episerver correctly.</p>
+<h1><a name="Writing-Documentation" class="anchor" href="#Writing-Documentation">Writing Documentation</a></h1>
+<p>When contributing to the documentation, a few ways to do it comes to mind:</p>
 <ul>
-<li>Create a database and add the connection string to ConnectionStrings.config, or create a ConnectionString.Debug.config and add it as a transformation.</li>
-<li>Get a license and put it in root of the web project (or override the licenseFilePath in EpiserverFramework.Debug.config)</li>
-<li>Create a site in IIS and make the application pool user db_owner of the database created earlier</li>
-<li>Navigate to the site and log in to /Episerver/CMS/Admin as your co-user.</li>
-<li>Config -&gt; Language settings: Add your languages and move the main language to the top (typically norwegian)</li>
-<li>Create a frontpage below Root in Edit Mode</li>
-<li>Manage Sites -&gt; Add Site: Add new site with your host and choose newly created startpage as root</li>
+<li>You are contributing a new feature and writing documentation for it</li>
+<li>You are correcting spelling mistakes, clearing up ambiguous wording or improving the flow of the text</li>
+<li>You noticed the documentation is lacking for an existing feature</li>
 </ul>
-<p><strong>NOTE</strong>: If you are using Episerver Find, follow the instructions for how to remove Episerver Search <a href="features/search.html">here</a></p>
-<h2><a name="Learn-More" class="anchor" href="#Learn-More">Learn More</a></h2>
-<p>To learn more about what is included, take a look at the feature list in the menu or get an overview of the structure <a href="structure.html">here</a>.</p>
+<p>Or, a totally different reason I didn't think of brought you here. Regardless of the reason, here is how to write documentation:</p>
+<h2><a name="Getting-it-up-and-running" class="anchor" href="#Getting-it-up-and-running">Getting it up and running</a></h2>
+<p>Documentation is written in markdown and can be found in the docs-folder.
+To start writing documentation, run build.cmd from repository root with the build target <strong>WriteDocumentation</strong></p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="bash">build.cmd WriteDocumentation
+</code></pre></td></tr></table>
+<p>The script will convert all markdown files to html and put them in the output folder. Open one of them in a browser to see the result.
+If the script detects a change in one of the markdown-files it will regenerate the corresponding html-file.
+You must manually reload the browser to see the changes.</p>
+<p>The script uses <a href="https://tpetricek.github.io/FSharp.Formatting/">FSharp.Formatting</a> to generate html. More complete documentation of the capabilities can be found there, but here is a short reference list:</p>
+<h2><a name="Linking-to-other-documents" class="anchor" href="#Linking-to-other-documents">Linking to other documents</a></h2>
+<p>When linking to other documents in the same documentation, use the relative path to the file from the current document and substitute .md with .html.</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="md">[Link to document at same level](document.html)
+</code></pre></td></tr></table>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="md">[Link to document in a subfolder](subfolder/document.html)
+</code></pre></td></tr></table>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="md">[Link to document higher in the structure](../document.html)
+</code></pre></td></tr></table>
+<h2><a name="Mixing-html-and-markdown" class="anchor" href="#Mixing-html-and-markdown">Mixing html and markdown</a></h2>
+<strong>You can mix in html markup in the markdown</strong> (just look at the source .md for this section)
 
 
         </div>

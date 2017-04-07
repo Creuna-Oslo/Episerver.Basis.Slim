@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>usage</title>
+    <title>Improving the scaffolding tool
+</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A quickstart template for new Episerver projects">
     <meta name="author" content="Christian Hochlin">
@@ -28,38 +29,30 @@
       <div class="row">
         <div class="span9" id="main">
           
-<h2><a name="Creating-a-solution-from-the-template" class="anchor" href="#Creating-a-solution-from-the-template">Creating a solution from the template</a></h2>
-<p>There are three possible ways to scaffold the template.</p>
-<p><strong>Note</strong>: Do not name part of your solution <strong>$solutionname$</strong> as it will mess with the namespace substitution regex.</p>
-<h3><a name="1-The-easy-way" class="anchor" href="#1-The-easy-way">1. The easy way</a></h3>
-<p>Download the <a href="http://github.com/Creuna-Oslo/Episerver.Basis.Slim/releases">latest scaffolding.exe</a>.
-Run it from the directory you want to scaffold into, or pass the path to a directory as the first argument (It defaults to current working directory if first argument is missing or not a valid directory).</p>
-<p>You will be prompted for the solution name.</p>
-<h3><a name="2-If-you-want-to-inspect-sources" class="anchor" href="#2-If-you-want-to-inspect-sources">2. If you want to inspect sources</a></h3>
-<p><strong>NOTE</strong>: This will be deprecated in the next release. The scaffolding tool will be the main way to distribute the template, mostly to avoid maintaining two code bases. The project is open source anyway, so the paranoid people can compile their own tool.</p>
-<p>Download the <a href="http://github.com/Creuna-Oslo/Episerver.Basis.Slim/releases">latest Scripts.zip</a>.
-Unzip the files in the directory you want to create the template.
-build.fsx describes the steps the script will execute, so you can be check it out yourself.
-Run build.cmd and after the script downloads the necessary dependencies you will be prompted for the solution name.</p>
-<p>The script will create the solution and clean up after itself, deleting all files, including build.cmd.
-If you want to know how it works, <a href="how-it-works.html">this page</a> is for you.</p>
-<h3><a name="3-DIY" class="anchor" href="#3-DIY">3. DIY</a></h3>
-<p>Clone the repository and build the scripts and exe yourself :)</p>
-<p>Please see the <a href="contribute.html">Contribute</a>-page for details about the build process and moving parts.</p>
-<h2><a name="Setting-up-the-environment" class="anchor" href="#Setting-up-the-environment">Setting up the environment</a></h2>
-<p>After setting up the solution, a couple of steps are needed to set up Episerver correctly.</p>
+<h1><a name="Improving-the-scaffolding-tool" class="anchor" href="#Improving-the-scaffolding-tool">Improving the scaffolding tool</a></h1>
+<p>The scaffolding tool is written using FAKE in an F# console application.</p>
+<p>Create a template.zip by running build.cmd in the root of the repository like this:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="i">build</span><span class="o">.</span><span class="i">cmd</span> <span class="i">PackageTemplate</span>
+</code></pre></td>
+</tr>
+</table>
+<p>and copy the template.zip in the root of src/BuildApp/Scaffolding.Build.</p>
+<p>Now it is possible to run the project directly from VS and debug the process.</p>
+<p>FAKE has a number of helpers to complete almost any task, and you can of course use all possible functionality in F# as well.</p>
+<p>References:</p>
 <ul>
-<li>Create a database and add the connection string to ConnectionStrings.config, or create a ConnectionString.Debug.config and add it as a transformation.</li>
-<li>Get a license and put it in root of the web project (or override the licenseFilePath in EpiserverFramework.Debug.config)</li>
-<li>Create a site in IIS and make the application pool user db_owner of the database created earlier</li>
-<li>Navigate to the site and log in to /Episerver/CMS/Admin as your co-user.</li>
-<li>Config -&gt; Language settings: Add your languages and move the main language to the top (typically norwegian)</li>
-<li>Create a frontpage below Root in Edit Mode</li>
-<li>Manage Sites -&gt; Add Site: Add new site with your host and choose newly created startpage as root</li>
+<li><a href="http://fsharp.github.io/FAKE/apidocs/index.html">A list of the helpers in FAKE</a></li>
+<li><a href="http://fsharp.github.io/FAKE/gettingstarted.html">Getting started with FAKE</a></li>
 </ul>
-<p><strong>NOTE</strong>: If you are using Episerver Find, follow the instructions for how to remove Episerver Search <a href="features/search.html">here</a></p>
-<h2><a name="Learn-More" class="anchor" href="#Learn-More">Learn More</a></h2>
-<p>To learn more about what is included, take a look at the feature list in the menu or get an overview of the structure <a href="structure.html">here</a>.</p>
+<h3><a name="A-quirk-to-be-aware-of" class="anchor" href="#A-quirk-to-be-aware-of">A quirk to be aware of</a></h3>
+<p>We have an indirect dependency between the build app and the script that builds it.</p>
+<p>The same way to replace the tokens are used both when packaging the template (moving from Creuna.Basis.Revisited to $solutionname$) and when extracting the template (moving from $solutionname$ to the user's choice of name).</p>
+<p>If your improvement touches upon that part of the tool, make sure the change is also reflected in the root build.fsx</p>
+<h2><a name="Testing-the-tool" class="anchor" href="#Testing-the-tool">Testing the tool</a></h2>
+<p>Run build.cmd without parameters to create a new scaffolding.exe in the build-folder.</p>
+<p>We are using IL Repack to merge all dependent dlls into the exe-file. If your enhancement uses an additional dll, make sure it is placed in the bin-folder of the app after build.</p>
 
 
         </div>
