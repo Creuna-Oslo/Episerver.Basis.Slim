@@ -30,6 +30,7 @@
           
 <h2><a name="Search" class="anchor" href="#Search">Search</a></h2>
 <p>Episerver Search is bundled as a default search solution. Many projects are using Find, so how to remove Episerver Search is also documented here.</p>
+<p>A <a href="https://github.com/jstemerdink/EPi.Libraries.BlockSearch">nuget package</a> is included to make blocks searchable as well. If you want to exclude a property on a block from being indexed, add the attribute [Searchable(false)] to it.</p>
 <h3><a name="Enabling-search" class="anchor" href="#Enabling-search">Enabling search</a></h3>
 <p>Episerver Search is disabled by default, as a manual configuration change is needed without crashing the initialization.</p>
 <p>In EpiserverSearch.config change the active-attribute to true and change the baseUri to point to your local address (projectname.local, localhost:12345 or whatever you use)</p>
@@ -69,7 +70,8 @@
 In the folder Configurations, remove EpiserverSearch.config, EpiserverSearchIndexingService.config and the equivalent environment transformation files (.Release etc).</p>
 <p>In Web.config, remove the two sections: episerver.search and episerver.search.indexingservice, as well as the IndexingServiceCustomBinding and and the Location element regarding the path IndexingServicee/IndexingService.svc.
 In Web.Release.config remove the location-transform element.</p>
-<p>Uninstall the nuget package EPiServer.Search and remove the IndexingService-folder if the uninstallation process did not remove it.</p>
+<p>Remove the nuget package EPi.Libraries.BlockSearch and the SearchText-property in ContentPageBase.</p>
+<p>Remove the nuget package EPiServer.Search and remove the IndexingService-folder if the uninstallation process did not remove it.</p>
 
 
         </div>
@@ -104,7 +106,7 @@ In Web.Release.config remove the location-transform element.</p>
                 <li><a href="/Episerver.Basis.Slim/features/azure.html">Azure compatibility</a></li>
                 <li><a href="/Episerver.Basis.Slim/features/custom-login.html">Custom Login Page</a></li>
                 <li><a href="/Episerver.Basis.Slim/features/edit-mode.html">Edit mode enhancements</a></li>
-                <li><a href="/Episerver.Basis.Slim/features/razor-helpers.html">Razor Helpers</a></li>
+                <li><a href="/Episerver.Basis.Slim/features/razor-helpers.html">Razor</a></li>
             </ul>
         </div>
       </div>
