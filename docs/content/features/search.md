@@ -52,6 +52,5 @@ In Web.Release.config remove the location-transform element.
 
 Remove the nuget package EPi.Libraries.BlockSearch and the SearchText-property in ContentPageBase.
 
-
 Remove the nuget package EPiServer.Search and remove the IndexingService-folder if the uninstallation process did not remove it.
 

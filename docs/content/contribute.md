@@ -1,7 +1,12 @@
 ## How to contribute
-This will be better documented in the future, but in a nutshell:
+There are four areas to contribute to: The template, the scaffolding tool, the documentation and opening issues for bugs or suggestions.
 
-  * Clone the repo
-  * Add/change/modify
-  * Verify it works by running build.cmd (which builds the build package)
-  * Run the resulting scaffolding.exe to scaffold a new solution  
+To start with either of them, fork the repository and then continue with either:
+
+* [Enhancing the template](contribution/template.html)
+* [Improving the scaffolding tool](contribution/tool.html)
+* [Writing documentation](contribution/documentation.html)
+* [Reporting bugs and suggestions](contribution/issues.html)
+
+If your contribution requires a code change, open a pull request in the main repository (See source code on github in the right menu).
+

@@ -11,6 +11,9 @@ Run it from the directory you want to scaffold into, or pass the path to a direc
 You will be prompted for the solution name.
 
 ### 2. If you want to inspect sources
+**NOTE**: This will be deprecated in the next release. The scaffolding tool will be the main way to distribute the template, mostly to avoid maintaining two code bases. The project is open source anyway, so the paranoid people can compile their own tool.
+
+
 Download the [latest Scripts.zip](http://github.com/Creuna-Oslo/Episerver.Basis.Slim/releases).
 Unzip the files in the directory you want to create the template.
 build.fsx describes the steps the script will execute, so you can be check it out yourself.
