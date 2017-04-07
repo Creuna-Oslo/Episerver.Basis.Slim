@@ -1,5 +1,6 @@
 #### 1.2.1.2 - 07.05.2017
 * Blocks are now indexed in episerver search
+* New Search Paths are added. See [documentation](https://creuna-oslo.github.io/Episerver.Basis.Slim/features/razor-helpers.html) for more information.
 
 #### 1.2.1.1 - 05.04.2017
 * Updated nuget packages
@@ -18,11 +19,11 @@
 * Added custom login page
 
 #### 1.0.2 - 28.03.2017
-* Changed [tab initialization](https://arthyon.github.io/Episerver.Basis.Slim/features/edit-mode.html#Tab-ordering-and-access-control) from initializable module to attribute-based
+* Changed [tab initialization](https://creuna-oslo.github.io/Episerver.Basis.Slim/features/edit-mode.html#Tab-ordering-and-access-control) from initializable module to attribute-based
 
 #### 1.0.1 - 27.03.2017
 * Error pages are now shown when building in release mode
-* 500 is now a static file. See [documentation](https://arthyon.github.io/Episerver.Basis.Slim/features/error-pages.html) for more information.
+* 500 is now a static file. See [documentation](https://creuna-oslo.github.io/Episerver.Basis.Slim/features/error-pages.html) for more information.
 
 #### 1.0 - 27.03.2017
 * First version with documentation finished

@@ -36,6 +36,6 @@ namespace Creuna.Basis.Revisited.Web.Controllers
     [TemplateDescriptor(TemplateTypeCategory = TemplateTypeCategories.MvcPartialController, Inherited = true, AvailableWithoutTag = false, Tags = new[] { ApplicationConstants.RenderingTags.Search })]
     public class GenericSearchContentController : PartialContentController<IContent>
     {
-        public override ActionResult Index(IContent currentPage) => PartialView("~/Views/SearchPage/GenericSearchResult.cshtml", currentPage);
+        public override ActionResult Index(IContent currentPage) => PartialView("~/Views/Shared/SearchResults/GenericSearchResult.cshtml", currentPage);
     }
 }

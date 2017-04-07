@@ -14,7 +14,7 @@ The solution structure should be familiar to most.
 - modules is an Episerver folder
 - Search contains the ISearchService-interface and a Episerver Search-implementation
 - Static is meant to contain all frontend files and will be included by default by [Octopack](features/octopus.html)
-- Views contains all template files
+- Views contains all template files. Page templates can be created as **Pages/{controllername}.cshtml** or **{controllername}/Index.cshtml**.
 
 
 The solution also contains a nuget.config-file that references the normal Nuget-feed, Episerver's feed and the Creuna myget-feed by default.

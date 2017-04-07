@@ -1,5 +1,10 @@
-## Razor Helpers
+## Razor
 
+A new path is added to the view engine so it is possible to place pages in **~/Views/Pages/{controllername}.cshtml**, and blocks in **~/Views/Blocks/{controllername}.cshtml**.
+
+e.g. **~/Views/Pages/FrontPage.cshtml**
+
+## Razor Helpers
 Some Razor helpers are included in the template. They are located ~/Business/Views.
 That namespace is included by default in all views, so no need to add @using-statements.
 

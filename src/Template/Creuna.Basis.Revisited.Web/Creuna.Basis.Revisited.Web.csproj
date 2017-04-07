@@ -323,7 +323,6 @@
     <None Include="Configurations\Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="readme.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -340,11 +339,11 @@
     <Content Include="Views\Shared\Header.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Shared\Metadata.cshtml" />
-    <Content Include="Views\FrontPage\Index.cshtml" />
-    <Content Include="Views\SearchPage\Index.cshtml" />
+    <Content Include="Views\Pages\FrontPage.cshtml" />
+    <Content Include="Views\Pages\SearchPage.cshtml" />
     <Content Include="Views\ErrorPages\NotFound.cshtml" />
     <Content Include="Creuna.Basis.Revisited.Web.nuspec" />
-    <Content Include="Views\SearchPage\GenericSearchResult.cshtml" />
+    <Content Include="Views\Shared\SearchResults\GenericSearchResult.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="modules\_protected\Shell\web.config" />
     <Content Include="modules\_protected\CMS\web.config" />
@@ -354,6 +353,7 @@
     <Compile Include="App_Start\MvcRoutesInitializer.cs" />
     <Compile Include="App_Start\Structuremap\StructureMapDependencyResolver.cs" />
     <Compile Include="App_Start\Structuremap\StructureMapDependencyScope.cs" />
+    <Compile Include="App_Start\ViewEngineInitializer.cs" />
     <Compile Include="App_Start\WebApiInitializer.cs" />
     <Compile Include="App_Start\StructureMapInitializer.cs" />
     <Compile Include="App_Start\WebRegistry.cs" />
@@ -397,6 +397,7 @@
   <ItemGroup>
     <Folder Include="Api\" />
     <Folder Include="Static\" />
+    <Folder Include="Views\Blocks\" />
     <Folder Include="Views\Shared\DisplayTemplates\" />
   </ItemGroup>
   <PropertyGroup>
