@@ -17,10 +17,12 @@ namespace Creuna.Basis.Revisited.Web.App_Start
 
         public void ConfigureContainer(ServiceConfigurationContext context)
         {
-            context.Container.Configure(ConfigureContainer);
+            var container = context.StructureMap();
 
-            DependencyResolver.SetResolver(new StructureMapDependencyResolver(context.Container));
-            GlobalConfiguration.Configuration.DependencyResolver = new StructureMapDependencyResolver(context.Container);
+            container.Configure(ConfigureContainer);
+
+            DependencyResolver.SetResolver(new StructureMapDependencyResolver(container));
+            GlobalConfiguration.Configuration.DependencyResolver = new StructureMapDependencyResolver(container);
         }
 
         void ConfigureContainer(ConfigurationExpression container)
