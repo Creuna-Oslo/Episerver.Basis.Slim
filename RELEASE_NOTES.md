@@ -1,4 +1,8 @@
-#### 1.2.1.2 - 07.05.2017
+#### 1.2.2 - 09.05.2017
+* Updated Nuget Packages
+* Episerver version 10.9.0
+
+#### 1.2.1.2 - 07.04.2017
 * Blocks are now indexed in episerver search
 * New Search Paths are added. See [documentation](https://creuna-oslo.github.io/Episerver.Basis.Slim/features/razor-helpers.html) for more information.
 
