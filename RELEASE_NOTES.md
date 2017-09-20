@@ -1,3 +1,6 @@
+#### 1.2.4 - 29.09.2017
+* Updated Nuget Packages
+
 #### 1.2.3 - 19.06.2017
 * Updated Nuget Packages
 * Episerver version 10.10.0
