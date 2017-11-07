@@ -47,10 +47,12 @@ The configuration transformation is set up to remove the local server when build
 If using other search solutions, Episerver search can safely be removed. 
 In the folder Configurations, remove EpiserverSearch.config, EpiserverSearchIndexingService.config and the equivalent environment transformation files (.Release etc).
 
-In Web.config, remove the two sections: episerver.search and episerver.search.indexingservice, as well as the IndexingServiceCustomBinding and and the Location element regarding the path IndexingServicee/IndexingService.svc.
+In Web.config, remove the two sections: episerver.search and episerver.search.indexingservice, as well as the IndexingServiceCustomBinding and and the Location element regarding the path IndexingService/IndexingService.svc.
 In Web.Release.config remove the location-transform element.
 
 Remove the nuget package EPi.Libraries.BlockSearch and the SearchText-property in ContentPageBase.
 
 Remove the nuget package EPiServer.Search and remove the IndexingService-folder if the uninstallation process did not remove it.
+
+In the .targets-file, remove the two ConfigName-elements for EPiServerSearch and EPiServerSearchIndexingService.
 
