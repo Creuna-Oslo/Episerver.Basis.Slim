@@ -56,3 +56,5 @@ Remove the nuget package EPiServer.Search and remove the IndexingService-folder 
 
 In the .targets-file, remove the two ConfigName-elements for EPiServerSearch and EPiServerSearchIndexingService.
 
+Remove EpiserverSearchService.cs and the corresponding resolving in WebRegistry.cs
+
