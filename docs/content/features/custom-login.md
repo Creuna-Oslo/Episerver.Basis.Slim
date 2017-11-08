@@ -43,3 +43,5 @@ To completely remove all traces, remove this as well:
 - The folder Account in Views
 - The folder UserHandling in ~/Business
 - The Registry entry connecting the UserHandler-interface with its implementation in WebRegistry
+- The Account section in the translations.[language].xml files
+- LoginViewModel.cs
