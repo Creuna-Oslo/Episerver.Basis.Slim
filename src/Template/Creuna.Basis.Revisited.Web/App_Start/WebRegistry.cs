@@ -2,7 +2,7 @@
 using Creuna.Basis.Revisited.Web.Search;
 using Creuna.Basis.Revisited.Web.Search.EpiserverSearch;
 using EPiServer.Logging;
-using StructureMap.Configuration.DSL;
+using StructureMap;
 
 namespace Creuna.Basis.Revisited.Web.App_Start
 {

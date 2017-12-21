@@ -5,9 +5,9 @@ using System.Web;
 using Creuna.Basis.Revisited.Web.Search.Models;
 using EPiServer.Core;
 using EPiServer.Search;
-using EPiServer.Search.Queries;
-using EPiServer.Search.Queries.Lucene;
 using EPiServer.Security;
+using EPiServer.Search.Queries.Lucene;
+using EPiServer.Search.Queries;
 using Creuna.Basis.Revisited.Web.Search.EpiserverSearch.Expressions;
 
 namespace Creuna.Basis.Revisited.Web.Search.EpiserverSearch
