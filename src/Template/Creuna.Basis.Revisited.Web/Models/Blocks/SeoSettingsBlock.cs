@@ -26,7 +26,7 @@ namespace Creuna.Basis.Revisited.Web.Models.Blocks
             ShortName = "Meta description",
             Name = "Meta description",
             Order = 20)]
-        [UIHint(UIHint.LongString)]
+        [UIHint(UIHint.Textarea)]
         [CultureSpecific]
         public virtual string MetaDescription { get; set; }
 
@@ -45,7 +45,7 @@ namespace Creuna.Basis.Revisited.Web.Models.Blocks
             Description = "A one to two sentence description of the page.",
             Order = 40,
             GroupName = SystemTabNames.Content)]
-        [UIHint(UIHint.LongString)]
+        [UIHint(UIHint.Textarea)]
         [CultureSpecific]
         public virtual string OpenGraphDescription { get; set; }
 
